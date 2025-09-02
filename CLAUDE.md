@@ -153,8 +153,11 @@ npm run dev
 # For development servers
 Start-DevelopmentServer -ProjectPath $path -ServerName $name -Port $port
 
-# For Claude agents  
+# For Claude agents (new terminal windows)
 Start-ClaudeAgent -ProjectPath $path -AgentCommand $command -AgentName $name -ProjectName $project
+
+# For Warp agents (new tabs, not windows)
+Start-WarpAgent -ProjectPath $path -AgentCommand $command -AgentName $name -ProjectName $project
 ```
 
 **Benefits:**

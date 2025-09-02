@@ -98,45 +98,67 @@ windows:
     fs.writeFileSync(configFile, launchConfig)
     console.log(`Created Warp config: ${configFile}`)
 
-    // Launch Warp with the configuration
-    // Method 1: Try direct launch with config
-    const warpCommand = `"${warpPath}" --launch-config "${configFile}"`
+    // Launch Warp in new tab instead of new window
+    // Method 1: Try to open in existing Warp window with new tab
+    const tabTitle = `${projectName} - ${agentName}`
+    
+    // Use warp command to open new tab with specific directory and command
+    const warpTabCommand = `"${warpPath}" --tab --title="${tabTitle}" --cwd="${projectPath}" --exec="claude --dangerously-skip-permissions \"${command.replace(/"/g, '\\"')}\""`
     
     try {
-      const result = await execAsync(warpCommand)
-      console.log('Warp launched successfully:', result.stdout)
+      // First try the tab approach
+      const result = await execAsync(warpTabCommand)
+      console.log('Warp tab launched successfully:', result.stdout)
       
       return NextResponse.json({
         success: true,
-        method: 'Warp Terminal',
-        configFile,
+        method: 'Warp Terminal (New Tab)',
+        tabTitle,
         stdout: result.stdout,
-        message: `Launched ${agentName} in Warp terminal`
+        message: `Launched ${agentName} in new Warp tab`
       })
     } catch (error) {
-      // Fallback: Launch Warp normally and let user open the config manually
+      console.log('Tab launch failed, trying launch config approach:', error)
+      
+      // Fallback 1: Try launch config approach
       try {
-        await execAsync(`"${warpPath}"`)
+        const configResult = await execAsync(`"${warpPath}" --launch-config "${configFile}"`)
+        console.log('Warp config launched successfully:', configResult.stdout)
         
         return NextResponse.json({
           success: true,
-          method: 'Warp Terminal (Manual)',
+          method: 'Warp Terminal (Config)',
           configFile,
-          message: `Warp launched. Use Command Palette -> Launch Configuration -> ${projectName} ${agentName}`,
-          instructions: [
-            '1. Open Command Palette in Warp (Ctrl+Shift+P)',
-            '2. Type "Launch Configuration"',
-            `3. Select "${projectName} ${agentName}"`,
-            '4. Agent will start in new tab'
-          ]
+          stdout: configResult.stdout,
+          message: `Launched ${agentName} in Warp terminal via config`
         })
-      } catch (fallbackError) {
-        return NextResponse.json({
-          success: false,
-          error: `Failed to launch Warp: ${fallbackError}`,
-          warpPath,
-          installUrl: 'https://www.warp.dev/download'
-        })
+      } catch (configError) {
+        console.log('Config launch failed, trying basic approach:', configError)
+        
+        // Fallback 2: Launch Warp normally and provide instructions
+        try {
+          await execAsync(`"${warpPath}"`)
+          
+          return NextResponse.json({
+            success: true,
+            method: 'Warp Terminal (Manual)',
+            configFile,
+            message: `Warp launched. Open new tab manually or use Command Palette`,
+            instructions: [
+              '1. Press Ctrl+Shift+T for new tab',
+              `2. Navigate to: ${projectPath}`,
+              `3. Run: claude --dangerously-skip-permissions "${command}"`,
+              'OR use Command Palette (Ctrl+Shift+P) -> Launch Configuration'
+            ]
+          })
+        } catch (fallbackError) {
+          return NextResponse.json({
+            success: false,
+            error: `Failed to launch Warp: ${fallbackError}`,
+            warpPath,
+            installUrl: 'https://www.warp.dev/download'
+          })
+        }
       }
     }
 
