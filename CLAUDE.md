@@ -132,6 +132,38 @@ interface DeveloperMetrics {
 
 ## 🛠️ TECHNICAL IMPLEMENTATION NOTES
 
+### **🚀 CRITICAL: Background Server Launch Pattern**
+
+**NEVER run development servers in foreground** - this blocks the chat session and kills productivity!
+
+#### **✅ CORRECT: Background Launch via PowerShell Module**
+```powershell
+# Launch server in background terminal
+powershell -Command "Import-Module './AgentManager.psm1' -Force; Start-DevelopmentServer -ProjectPath '$(PWD)' -ServerName 'Dashboard Server' -Port '3500'"
+```
+
+#### **❌ WRONG: Foreground Launch**
+```bash
+# This BLOCKS the chat session - never do this!
+npm run dev
+```
+
+#### **PowerShell Module Functions**
+```powershell
+# For development servers
+Start-DevelopmentServer -ProjectPath $path -ServerName $name -Port $port
+
+# For Claude agents  
+Start-ClaudeAgent -ProjectPath $path -AgentCommand $command -AgentName $name -ProjectName $project
+```
+
+**Benefits:**
+- ✅ Server runs in separate terminal window
+- ✅ Chat session remains active for continued development
+- ✅ Process ID tracking for management
+- ✅ Clear window titles for identification
+- ✅ **PRODUCTIVITY MAINTAINED** 🎯
+
 ### **GitHub API Integration**
 ```typescript
 // Key endpoints for analytics

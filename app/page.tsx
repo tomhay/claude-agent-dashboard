@@ -568,37 +568,79 @@ export default function Dashboard() {
                 )}
               </div>
               
-              {/* Launch Claude button for each project */}
-              <button
-                onClick={async () => {
-                  const projectPaths: Record<string, string> = {
-                    'Universal': 'C:\\Users\\User\\apps',
-                    'AIBL': 'C:\\Users\\User\\apps\\aibl',
-                    'BL2': 'C:\\Users\\User\\apps\\bl2',
-                    'Blxero': 'C:\\Users\\User\\apps\\blxero',
-                    'PureZone': 'C:\\Users\\User\\Shopify\\purezone',
-                    'Upify': 'C:\\Users\\User\\apps\\upify',
-                    'MyDiff': 'C:\\Users\\User\\Shopify\\mydiff',
-                    'BaliLove': 'C:\\Users\\User\\apps\\balilove'
-                  }
-                  
-                  const path = projectPaths[projectName]
-                  if (path) {
-                    await fetch('/api/run-agent', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                        agentId: `${projectName.toLowerCase()}-launch`,
-                        projectPath: path,
-                        agentName: `Launch Claude in ${projectName}`
+              {/* Launch buttons for each project */}
+              <div className="grid grid-cols-2 gap-1 mb-2">
+                <button
+                  onClick={async () => {
+                    const projectPaths: Record<string, string> = {
+                      'Universal': 'C:\\Users\\User\\apps',
+                      'AIBL': 'C:\\Users\\User\\apps\\aibl',
+                      'BL2': 'C:\\Users\\User\\apps\\bl2',
+                      'Blxero': 'C:\\Users\\User\\apps\\blxero',
+                      'PureZone': 'C:\\Users\\User\\Shopify\\purezone',
+                      'Upify': 'C:\\Users\\User\\apps\\upify',
+                      'MyDiff': 'C:\\Users\\User\\Shopify\\mydiff',
+                      'BaliLove': 'C:\\Users\\User\\apps\\balilove'
+                    }
+                    
+                    const path = projectPaths[projectName]
+                    if (path) {
+                      await fetch('/api/run-agent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentId: `${projectName.toLowerCase()}-launch`,
+                          projectPath: path,
+                          agentName: `Launch Claude in ${projectName}`
+                        })
                       })
-                    })
-                  }
-                }}
-                className="w-full mb-2 px-2 py-1 bg-slate-600 text-white text-xs rounded hover:bg-slate-700 transition-colors"
-              >
-                Launch Claude
-              </button>
+                    }
+                  }}
+                  className="px-2 py-1 bg-slate-600 text-white text-xs rounded hover:bg-slate-700 transition-colors"
+                >
+                  Launch Claude
+                </button>
+                
+                <button
+                  onClick={async () => {
+                    const projectPaths: Record<string, string> = {
+                      'Universal': 'C:\\Users\\User\\apps',
+                      'AIBL': 'C:\\Users\\User\\apps\\aibl',
+                      'BL2': 'C:\\Users\\User\\apps\\bl2',
+                      'Blxero': 'C:\\Users\\User\\apps\\blxero',
+                      'PureZone': 'C:\\Users\\User\\Shopify\\purezone',
+                      'Upify': 'C:\\Users\\User\\apps\\upify',
+                      'MyDiff': 'C:\\Users\\User\\Shopify\\mydiff',
+                      'BaliLove': 'C:\\Users\\User\\apps\\balilove'
+                    }
+                    
+                    const path = projectPaths[projectName]
+                    if (path) {
+                      const response = await fetch('/api/launch-warp-agent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentId: `${projectName.toLowerCase()}-launch-warp`,
+                          projectPath: path,
+                          agentName: `Launch Warp in ${projectName}`,
+                          projectName: projectName
+                        })
+                      })
+                      const result = await response.json()
+                      if (result.success) {
+                        console.log('Warp launched for project:', projectName)
+                      } else {
+                        console.log('Warp launch failed for project:', projectName, result.error)
+                        alert('Warp launch failed. Make sure Warp terminal is installed.')
+                      }
+                    }
+                  }}
+                  className="px-1 py-1 bg-purple-600 text-white text-xs rounded hover:bg-purple-700 transition-colors flex items-center justify-center"
+                  title="Launch Warp Terminal"
+                >
+                  ⚡ Warp
+                </button>
+              </div>
               
               <div className="space-y-2">
                 {projectAgents.map(agent => (

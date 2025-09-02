@@ -34,51 +34,46 @@ git log --oneline -5
 ### Problem: Opening Agents in Tmux
 The original Warp launcher opened agents directly in terminal tabs, which could block the interface.
 
-### Solution: Tmux Session Management
+### Solution: Windows-Native Session Management
 Enhanced the Warp launcher (`app/api/launch-warp-agent/route.ts`) to:
 
-1. **Create named tmux sessions** for each agent: `projectname-agentname`
-2. **Reuse existing sessions** if the agent is already running
-3. **Attach to sessions** instead of creating new processes
+1. **Create named Warp tabs** for each agent: `ProjectName - AgentName`
+2. **Proper error handling** with user-friendly messages
+3. **Launch configurations** stored in `.warp/launch_configurations/`
+4. **PowerShell-native execution** with Windows Terminal integration
 
 ### Benefits
-- ✅ Non-blocking: Agents run in background tmux sessions
-- ✅ Persistent: Sessions survive terminal closures  
-- ✅ Reattachable: Can reconnect to running agents
-- ✅ Isolated: Each agent has its own session
-- ✅ Project-aware: Sessions named by project and agent
+- ✅ **Windows-native**: No external dependencies (tmux not required)
+- ✅ **Warp-integrated**: Uses Warp's built-in launch configurations
+- ✅ **Error-friendly**: Shows helpful error messages and waits for user input
+- ✅ **Project-aware**: Each agent gets its own properly named tab
+- ✅ **Reusable**: Launch configurations are saved for future use
 
 ### Usage
 When you click the ⚡ (Warp) button in the dashboard:
 
-1. **First time**: Creates new tmux session and starts agent
-2. **Subsequent clicks**: Attaches to existing session
-3. **Session naming**: `balilove-sod`, `aibl-eod`, etc.
+1. **Creates Warp launch configuration** in `~/.warp/launch_configurations/`
+2. **Opens new Warp tab** with proper working directory
+3. **Displays session info** (project, agent, directory)
+4. **Runs agent** with error handling
+5. **Keeps tab open** on errors for debugging
 
-### Manual Tmux Commands
-You can also manage sessions manually:
+### Manual Warp Usage
+You can also use the launch configurations manually:
 
-```bash
-# List all agent sessions
-tmux list-sessions
+1. **Command Palette**: `Ctrl+Shift+P` → "Launch Configuration"
+2. **Select configuration**: Choose your project-agent combo
+3. **Direct launch**: Warp opens new tab and runs the agent
 
-# Attach to specific agent
-tmux attach-session -t balilove-sod
-
-# Kill a session
-tmux kill-session -t balilove-sod
-
-# Create detached session
-tmux new-session -d -s my-agent-session
-```
+Configurations are saved in: `%USERPROFILE%\.warp\launch_configurations\`
 
 ## Environment Requirements
 
 For optimal functionality, ensure:
 
-1. **Tmux installed**: `winget install tmux` (Windows) or package manager
-2. **Warp terminal installed**: https://www.warp.dev/download
-3. **Claude CLI available**: In your PATH
+1. **Warp terminal installed**: https://www.warp.dev/download
+2. **Claude CLI available**: In your PATH
+3. **PowerShell 5.1+**: (Standard on Windows 10/11)
 
 ## Testing the Fix
 
@@ -104,17 +99,6 @@ git config --list | grep pager
 # Reset if needed
 git config --global --unset core.pager
 git config --global core.pager cat
-```
-
-### If tmux sessions don't start:
-```bash
-# Install tmux (Windows)
-winget install tmux
-
-# Test tmux
-tmux new-session -d -s test
-tmux list-sessions
-tmux kill-session -t test
 ```
 
 ### If Warp doesn't launch:

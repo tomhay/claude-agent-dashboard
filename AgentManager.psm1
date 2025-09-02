@@ -49,5 +49,45 @@ function Start-ClaudeAgent {
     }
 }
 
+# Function to start development server in background
+function Start-DevelopmentServer {
+    param(
+        [string]$ProjectPath,
+        [string]$ServerName = "Dashboard Server",
+        [string]$Port = "3500"
+    )
+    
+    Write-Host "Start-DevelopmentServer called with:"
+    Write-Host "  ProjectPath: $ProjectPath"
+    Write-Host "  ServerName: $ServerName" 
+    Write-Host "  Port: $Port"
+    
+    $timestamp = Get-Date -Format "HH:mm"
+    $windowTitle = "$ServerName - Port $Port - $timestamp"
+    
+    # Create command for launching the server
+    $cmdArgs = "/k `"cd /d `"$ProjectPath`" && title `"$windowTitle`" && npm run dev`""
+    
+    Write-Host "Launching server with cmd.exe args: $cmdArgs"
+    
+    # Start the process
+    try {
+        $process = Start-Process -FilePath "cmd.exe" -ArgumentList $cmdArgs -PassThru
+        
+        # Wait a moment for the process to actually start
+        Start-Sleep -Milliseconds 1000
+        
+        # Output in format that Node.js can easily parse
+        Write-Host "SUCCESS:ProcessId:$($process.Id):WindowTitle:$windowTitle:Port:$Port"
+        Write-Output "SUCCESS:ProcessId:$($process.Id):WindowTitle:$windowTitle:Port:$Port"
+        
+        return $process.Id
+    } catch {
+        Write-Host "ERROR:$_"
+        Write-Output "ERROR:$_"
+        return $null
+    }
+}
+
 # Export functions for use
-Export-ModuleMember -Function Start-ClaudeAgent
+Export-ModuleMember -Function Start-ClaudeAgent, Start-DevelopmentServer
