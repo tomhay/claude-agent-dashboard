@@ -1,0 +1,168 @@
+{% if cart.item_count > 0 %}            
+        
+  <style>
+    
+    .cart-product-list {
+      margin-bottom: 14px;
+    }
+    
+    .popup-cart-total {
+        text-align: center;
+        font-size: 14px;
+        font-weight: normal;
+        color: #8c50a4;
+        position: relative;
+    }
+    
+    .popup-cart-total:before {
+      content: "";
+      right: 0;
+      width: 40%;
+      height: 1px;
+      position: absolute;
+      left: 0;
+      background: #e0e0e0;
+      top: 50%;
+    }
+
+    .popup-cart-total:after {
+        content: "";
+        right: 0;
+        width: 40%;
+        height: 1px;
+        position: absolute;
+        background: #e0e0e0;
+        top: 50%;
+    }
+    .popup-cart-total span.c-title {
+        color: #4F4F4F;
+        font-weight: normal;
+        font-size: 14px;
+    }
+    .popup-cart-total + a {
+      display: inline-block;
+      width: 98%;
+      text-align: center;
+      padding: 5px;
+      background: #8c50a4;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 14px auto;
+      border-radius: 50px;
+    }
+    .convFreeShipMsg {
+        text-align: center;
+        font-size: 14px;
+        font-weight: normal;
+        color: #02a346;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto 5px;
+    }
+    .convFreeShipMsg svg {
+        padding-right: 10px;
+    }
+    .convPersistentCartPop h1{
+      font-size: 24px;
+      font-weight: 500;
+      text-align: center;
+      font-family: "Source Sans Pro",sans-serif;
+      text-transform: capitalize;
+      color:#333333;
+      margin-bottom:5px;
+    }
+    .convPersistentCartPop p{
+      font-size: 15px;
+      font-weight: normal;
+      text-align: center;
+      color: #333333;
+      margin-bottom:0;
+      line-height: 1.4;
+    }
+    .seprator{
+      border-bottom: 1px solid #F2F2F2;
+      margin: 15px auto 15px auto;
+    }
+    .cart-product-list{
+      list-style: none;
+      width: 100%;
+      display: inline-block;
+      margin:auto;
+    }
+    .cart-product-list li.cart-product{
+      width: 31%;
+      display: inline-block;
+      margin: 0 6px;
+      border: 1px solid #F2F2F2;
+      border-radius: 5px;
+      float: left;
+    }
+    .cart-product-list li.cart-product .cart-product-content{
+      padding: 10px;
+    }
+    .cart-product-list li.cart-product img{
+      width: 100%;
+    }
+    .cart-product-list li.cart-product a{
+      width: 100%;
+      color: #4F4F4F;
+      font-size: 13px;
+      display: block;
+      font-weight: 500;
+    }
+    .cart-product-list li.cart-product p.cart-price{
+      text-align: left;
+      font-size: 14px;
+      font-weight: normal;
+      color: #212529;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    
+    @media only screen and (max-width: 767px){
+
+    }  
+  </style> 
+
+  <div class="convPersistentCartPop" id="convPersistentCartPop" style="display:none;">
+    <div class="persistentPopContent">
+      	<span class="popClose">&times;</span>
+    	<h1>Welcome Back</h1>
+        <p>We've kept these {{ cart.item_count }} items in your cart</p>
+        <p>are you still interested in purchasing these?</p>
+        <div class="seprator"></div>
+    
+        <ul class="cart-product-list"> 
+          {% for item in cart.items limit: 3 %}
+            <li class="cart-product">
+              <img src="{{ item | img_url: '180x180', crop: 'top' }}" alt="{{ item.title | escape }}" class="lazyload">
+              <div class="cart-product-content">
+                <a href="{{ item.url }}" class="">{{ item.title | truncate: 50 }}</a>
+                <p class="cart-price">{{ item.final_line_price | money }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="popup-cart-total">
+          <span class="c-title">Total :</span> {{ cart.total_price | money }}
+        </div>	
+    
+	
+    	<a href="/cart" class="">View Cart &amp; Checkout</a>
+
+        {% if cart.total_price >= 10000 %}
+<!--         <div class="convFreeShipMsg">
+          <svg width="35" height="27" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M27.0403 9.47498C27.0331 9.39621 27.0116 9.31899 26.9773 9.24766C26.9704 9.23402 26.9773 9.21789 26.9648 9.20424L24.7045 5.46356C24.3409 4.86285 23.6875 4.49443 22.9816 4.49226H18.4019V3.80968C18.3994 1.98244 16.9084 0.501922 15.069 0.500061H3.83287C1.99161 0.501922 0.5 1.98523 0.5 3.81433V16.8497C0.5 17.2265 0.807501 17.5319 1.18712 17.5319H3.31871C3.69739 19.2295 5.38942 20.301 7.09832 19.9248C8.30116 19.6603 9.24052 18.7268 9.50713 17.5319H18.9504C19.3331 19.228 21.0273 20.2945 22.7344 19.9146C23.9306 19.6482 24.8647 18.7203 25.1329 17.5319H26.375C26.7544 17.5319 27.0622 17.2265 27.0622 16.8497V9.5705C27.0572 9.53825 27.05 9.5063 27.0403 9.47498ZM8.21219 16.8565C8.20719 17.8207 7.41612 18.5981 6.44554 18.5932C5.47496 18.5882 4.69232 17.8024 4.69729 16.8382C4.70231 15.874 5.49338 15.0966 6.46396 15.1015C7.42736 15.1065 8.20719 15.8812 8.21219 16.8382V16.8484V16.8565ZM17.028 5.17452V16.1671H9.50931C9.13376 14.4682 7.44266 13.3937 5.73251 13.7671C4.52499 14.0307 3.58188 14.9675 3.31652 16.1671H1.87392V3.81433C1.87517 2.74069 2.75085 1.8708 3.83163 1.86956H15.0737C16.1545 1.8708 17.0301 2.74069 17.0314 3.81433L17.028 5.17452ZM18.4019 5.8571H22.9816C23.2048 5.85772 23.4115 5.97433 23.5267 6.16412L25.1616 8.87334H18.4066L18.4019 5.8571ZM22.0394 18.6354C21.0486 18.6313 20.2472 17.8337 20.2453 16.8497C20.2459 15.8622 21.0523 15.0621 22.0463 15.0628C23.0403 15.0634 23.8454 15.8644 23.8448 16.8518C23.8442 17.839 23.0387 18.6388 22.0451 18.6388L22.0394 18.6354ZM25.6882 16.1671H25.1488C24.7701 14.467 23.0756 13.394 21.3645 13.7702C20.1592 14.0353 19.2182 14.97 18.9516 16.1671H18.4066V10.2428H25.6882V16.1671ZM13.4019 5.10196C13.6704 5.36835 13.6707 5.80035 13.4026 6.06705C13.4026 6.06705 13.4022 6.06736 13.4019 6.06736L8.41698 11.0194C8.14913 11.2861 7.71394 11.2864 7.44547 11.02C7.44547 11.02 7.44515 11.0197 7.44515 11.0194L5.55613 9.1416C5.28765 8.87521 5.28765 8.4429 5.55613 8.17619C5.8243 7.90949 6.25948 7.90949 6.52796 8.17619L7.93154 9.5705L12.431 5.10072C12.6998 4.83494 13.1341 4.83556 13.4019 5.10196Z" fill="#02a346"/>
+          </svg>
+
+          Free Shipping
+        </div> -->
+        {% endif %}
+      
+    </div>
+  </div>
+{% endif %}

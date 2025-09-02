@@ -1,0 +1,324 @@
+[
+  {
+    "sha": "2ebeb589603a6334644dbefc5e3393eb4deeac85",
+    "node_id": "C_kwDOPm15CNoAKDJlYmViNTg5NjAzYTYzMzQ2NDRkYmVmYzVlMzM5M2ViNGRlZWFjODU",
+    "commit": {
+      "author": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T10:44:59Z"
+      },
+      "committer": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T10:44:59Z"
+      },
+      "message": "Complete migration documentation and final setup\n\n✅ BALI LOVE MIGRATION COMPLETE:\n- Updated CLAUDE.md with full project status\n- 8 pages successfully imported to Sanity\n- 94 images catalogued and ready for upload\n- Development environment fully configured\n- Content migration from bali.love completed\n\n📊 Migration Results:\n- Homepage, Packages, Venues, Tours, About, Contact pages\n- 280+ content blocks preserved in Sanity format\n- Navigation and SEO metadata maintained\n- Wedding business focus and luxury positioning preserved\n\n🎯 Ready for frontend development and Vercel deployment\n\n🤖 Generated with Claude Code https://claude.ai/code\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "01119259aaf6b77d9dcc5fab7a364e6962f8e18d",
+        "url": "https://api.github.com/repos/BaliLove/balilove-website/git/trees/01119259aaf6b77d9dcc5fab7a364e6962f8e18d"
+      },
+      "url": "https://api.github.com/repos/BaliLove/balilove-website/git/commits/2ebeb589603a6334644dbefc5e3393eb4deeac85",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/BaliLove/balilove-website/commits/2ebeb589603a6334644dbefc5e3393eb4deeac85",
+    "html_url": "https://github.com/BaliLove/balilove-website/commit/2ebeb589603a6334644dbefc5e3393eb4deeac85",
+    "comments_url": "https://api.github.com/repos/BaliLove/balilove-website/commits/2ebeb589603a6334644dbefc5e3393eb4deeac85/comments",
+    "author": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ad6fed3728c364cd20c60543fe7fc9769db4a3f7",
+        "url": "https://api.github.com/repos/BaliLove/balilove-website/commits/ad6fed3728c364cd20c60543fe7fc9769db4a3f7",
+        "html_url": "https://github.com/BaliLove/balilove-website/commit/ad6fed3728c364cd20c60543fe7fc9769db4a3f7"
+      }
+    ]
+  },
+  {
+    "sha": "ad6fed3728c364cd20c60543fe7fc9769db4a3f7",
+    "node_id": "C_kwDOPm15CNoAKGFkNmZlZDM3MjhjMzY0Y2QyMGM2MDU0M2ZlN2ZjOTc2OWRiNGEzZjc",
+    "commit": {
+      "author": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T10:03:02Z"
+      },
+      "committer": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T10:03:02Z"
+      },
+      "message": "Complete content migration system with Sanity API import\n\n✅ COMPLETE BALI LOVE CONTENT MIGRATION:\n- Scraped all 9 pages (280+ content blocks)\n- Extracted 94 images with metadata\n- Generated Sanity-compatible schemas\n- Created API import scripts for direct Sanity upload\n- Environment configuration ready\n\n📁 Migration Results:\n- sanity-import/pages.ndjson (8 pages)\n- sanity-import/images.ndjson (94 images)\n- sanity-import/sanity-schemas.js (wedding business schemas)\n- sanity-import/IMPORT_INSTRUCTIONS.md (setup guide)\n\n🎯 Ready for Sanity project configuration and content import\n\n🤖 Generated with Claude Code https://claude.ai/code\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "26ab940dfa2e4e6a19294583e8ad48e0145e11e9",
+        "url": "https://api.github.com/repos/BaliLove/balilove-website/git/trees/26ab940dfa2e4e6a19294583e8ad48e0145e11e9"
+      },
+      "url": "https://api.github.com/repos/BaliLove/balilove-website/git/commits/ad6fed3728c364cd20c60543fe7fc9769db4a3f7",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/BaliLove/balilove-website/commits/ad6fed3728c364cd20c60543fe7fc9769db4a3f7",
+    "html_url": "https://github.com/BaliLove/balilove-website/commit/ad6fed3728c364cd20c60543fe7fc9769db4a3f7",
+    "comments_url": "https://api.github.com/repos/BaliLove/balilove-website/commits/ad6fed3728c364cd20c60543fe7fc9769db4a3f7/comments",
+    "author": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "4d86615d6fb6af18536c0e4a234d1792091435ae",
+        "url": "https://api.github.com/repos/BaliLove/balilove-website/commits/4d86615d6fb6af18536c0e4a234d1792091435ae",
+        "html_url": "https://github.com/BaliLove/balilove-website/commit/4d86615d6fb6af18536c0e4a234d1792091435ae"
+      }
+    ]
+  },
+  {
+    "sha": "4d86615d6fb6af18536c0e4a234d1792091435ae",
+    "node_id": "C_kwDOPm15CNoAKDRkODY2MTVkNmZiNmFmMTg1MzZjMGU0YTIzNGQxNzkyMDkxNDM1YWU",
+    "commit": {
+      "author": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T08:58:48Z"
+      },
+      "committer": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T08:58:48Z"
+      },
+      "message": "Add content scraping and migration tools\n\n- Web scraping scripts for existing site content\n- HTML content parser for Squarespace extraction\n- Migration framework ready for Sanity import\n- Downloaded initial homepage content\n\nNext: Configure Sanity schemas and complete content migration\n\n🤖 Generated with Claude Code https://claude.ai/code\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "27629ca05afa4ef00fd113696ef0d6b776b1f026",
+        "url": "https://api.github.com/repos/BaliLove/balilove-website/git/trees/27629ca05afa4ef00fd113696ef0d6b776b1f026"
+      },
+      "url": "https://api.github.com/repos/BaliLove/balilove-website/git/commits/4d86615d6fb6af18536c0e4a234d1792091435ae",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/BaliLove/balilove-website/commits/4d86615d6fb6af18536c0e4a234d1792091435ae",
+    "html_url": "https://github.com/BaliLove/balilove-website/commit/4d86615d6fb6af18536c0e4a234d1792091435ae",
+    "comments_url": "https://api.github.com/repos/BaliLove/balilove-website/commits/4d86615d6fb6af18536c0e4a234d1792091435ae/comments",
+    "author": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "4862c642f5071cf193ad5f924c712478771a4107",
+        "url": "https://api.github.com/repos/BaliLove/balilove-website/commits/4862c642f5071cf193ad5f924c712478771a4107",
+        "html_url": "https://github.com/BaliLove/balilove-website/commit/4862c642f5071cf193ad5f924c712478771a4107"
+      }
+    ]
+  },
+  {
+    "sha": "4862c642f5071cf193ad5f924c712478771a4107",
+    "node_id": "C_kwDOPm15CNoAKDQ4NjJjNjQyZjUwNzFjZjE5M2FkNWY5MjRjNzEyNDc4NzcxYTQxMDc",
+    "commit": {
+      "author": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T08:52:22Z"
+      },
+      "committer": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-30T08:52:22Z"
+      },
+      "message": "Initial setup: Next.js + Sanity template with content migration tools\n\n- Next.js 15 with Sanity CMS integration\n- Web scraping script for existing Squarespace site\n- Content migration script for Sanity import\n- Ready for Vercel deployment and Sanity configuration\n\n🤖 Generated with Claude Code https://claude.ai/code\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "bcbbf3997c9d11c1f21ba297a7f36ed6ed4e7a38",
+        "url": "https://api.github.com/repos/BaliLove/balilove-website/git/trees/bcbbf3997c9d11c1f21ba297a7f36ed6ed4e7a38"
+      },
+      "url": "https://api.github.com/repos/BaliLove/balilove-website/git/commits/4862c642f5071cf193ad5f924c712478771a4107",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/BaliLove/balilove-website/commits/4862c642f5071cf193ad5f924c712478771a4107",
+    "html_url": "https://github.com/BaliLove/balilove-website/commit/4862c642f5071cf193ad5f924c712478771a4107",
+    "comments_url": "https://api.github.com/repos/BaliLove/balilove-website/commits/4862c642f5071cf193ad5f924c712478771a4107/comments",
+    "author": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": []
+  }
+]

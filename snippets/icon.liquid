@@ -1,0 +1,23 @@
+{% comment %}
+Required values
+name: <icon name>
+{% endcomment %}
+
+{% liquid
+  assign a_to_l = 'abcdefghijkl'
+  assign icon_first_letter = name | downcase | slice: 0
+
+  if settings.icon == 'icon_solid'
+    if a_to_l contains icon_first_letter
+      render 'icon_solid_a-l', name: name, icon_class: icon_class
+    else
+      render 'icon_solid_m-z', name: name, icon_class: icon_class
+    endif
+  elsif settings.icon == 'icon_outline'
+    if a_to_l contains icon_first_letter
+      render 'icon_outline_a-l', name: name, icon_class: icon_class
+    else
+      render 'icon_outline_m-z', name: name, icon_class: icon_class
+    endif
+  endif
+%}

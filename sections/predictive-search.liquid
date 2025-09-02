@@ -1,0 +1,177 @@
+{% liquid
+  assign queries_available = false
+  assign products_results_available = false
+  assign collections_results_available = false
+  assign pages_results_available = false
+  assign posts_results_available = false
+  assign pages_posts_results_available = false
+  assign no_search_results = true
+
+  if predictive_search.resources.queries.size > 0
+    assign queries_available = true
+  endif
+
+  if predictive_search.resources.products.size > 0
+    assign products_results_available = true
+  endif
+
+  if predictive_search.resources.collections.size > 0
+    assign collections_results_available = true
+  endif
+
+  if predictive_search.resources.pages.size > 0
+    assign pages_results_available = true
+  endif
+
+  if predictive_search.resources.articles.size > 0
+    assign posts_results_available = true
+  endif
+
+  if pages_results_available or posts_results_available
+    assign pages_posts_results_available = true
+  endif
+
+  if queries_available or products_results_available or collections_results_available or pages_posts_results_available
+    assign no_search_results = false
+  endif
+%}
+
+{%- if predictive_search.performed -%}
+  <div class="search__results">
+
+    {%- if queries_available or collections_results_available -%}
+      <div class="search__results__suggestions">
+        <h3 class="results-heading">{{ 'general.search.suggestions' | t }}</h3>
+        <ul>
+          {%- for query in predictive_search.resources.queries -%}
+            <li class="search__results__item">
+              <a
+                href="{{ query.url }}"
+                class="search__results__item__suggestions"
+              >
+                {{ query.styled_text }}
+              </a>
+            </li>
+          {%- endfor -%}
+          {%- for collection in predictive_search.resources.collections -%}
+            <li class="search__results__item">
+              <a href="{{ collection.url }}">{{ collection.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    {%- if products_results_available or pages_posts_results_available -%}
+      <div class="products-page-posts-wrapper">
+        {%- if products_results_available -%}
+          <div class="search__results__products">
+            <h3 class="results-heading">{{ 'general.search.products' | t }}</h3>
+            <ul>
+              {%- for product in predictive_search.resources.products -%}
+                <li class="search__results__item search__results__item--product">
+                  <a href="{{ product.url }}">
+                    <div class="search__results__thumbnail">
+                      {%- if product.featured_media != blank -%}
+                        <img
+                          class="
+                            lazyload
+                            transition--{{ settings.image_loading_style }}
+                          "
+                          src="{{ product.featured_media | image_url: height: '300' }}"
+                          alt="{{ product.featured_media.alt }}"
+                        >
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%}
+                    </div>
+                    <div class="description">
+                      <h4 class="description__title">{{ product.title }}</h4>
+                      <span
+                        class="
+                          item-pricing
+                          price
+                          {%- if product.compare_at_price > product.price -%}sale{%- endif -%}
+                        "
+                      >
+                        {%- if product.available -%}
+                          {%- if product.price_varies and product.price_min > 0 -%}
+                            <small><em>{{ 'products.general.from' | t }}</em></small>
+                          {%- endif -%}
+                          {%- if product.price_min > 0 -%}
+                            <span class="money">
+                              {%
+                                render 'price-element',
+                                price: product.price_min,
+                              %}
+                            </span>
+                          {%- else -%}
+                            {{ settings.free_price_text }}
+                          {%- endif -%}
+                          {%- if product.compare_at_price > product.price -%}
+                            <span class="compare-at-price">
+                              <span class="money">
+                                {%
+                                  render 'price-element',
+                                  price: product.compare_at_price,
+                                %}
+                              </span>
+                            </span>
+                          {%- endif -%}
+                        {%- else -%}
+                          <span class="sold-out">{{ 'products.product.sold_out' | t }}</span>
+                        {%- endif -%}
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if pages_posts_results_available -%}
+          <div class="search__results__pages-posts">
+            <h3 class="results-heading">
+              {%- if pages_results_available and posts_results_available == false -%}
+                {{ 'general.search.pages' | t }}
+              {%- elsif pages_results_available == false and posts_results_available -%}
+                {{ 'general.search.posts' | t }}
+              {%- else -%}
+                {{ 'general.search.pages_and_posts' | t }}
+              {%- endif -%}
+            </h3>
+            <ul>
+              {%- for page in predictive_search.resources.pages -%}
+                <li class="search__results__item">
+                  <a href="{{ page.url }}">{{ page.title }}</a>
+                </li>
+              {%- endfor -%}
+              {%- for article in predictive_search.resources.articles -%}
+                <li class="search__results__item">
+                  <a href="{{ article.url }}">{{ article.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if no_search_results -%}
+      <p class="no-results">{{ 'general.search.no_results' | t }}</p>
+    {%- endif -%}
+
+  </div>
+
+    <button
+      class="
+        button
+        all-results
+      "
+      type="submit"
+    >
+      {{ 'general.search.search_for' | t: search_terms: predictive_search.terms }}
+    </button>
+{%- endif -%}
+

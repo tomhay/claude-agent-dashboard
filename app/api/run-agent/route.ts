@@ -6,7 +6,7 @@ const execAsync = promisify(exec)
 
 export async function POST(req: NextRequest) {
   try {
-    const { agentId, projectPath, agentName } = await req.json()
+    const { agentId, projectPath, agentName, projectName } = await req.json()
 
     console.log(`Running agent: ${agentName} in ${projectPath}`)
 
@@ -57,23 +57,39 @@ export async function POST(req: NextRequest) {
       'upify-seo': 'Run SEO optimization analysis',
       'upify-conversion': 'Run conversion rate optimization',
       'mydiff-sod': '@sod-agent Generate MyDiff start of day report',
-      'mydiff-theme': '@shopify-theme-analyzer Analyze MyDiff theme'
+      'mydiff-theme': '@shopify-theme-analyzer Analyze MyDiff theme',
+      
+      // Project cleanup agents
+      'aibl-issue-cleanup': 'AIBL GitHub Issue Review Agent: Systematically review all GitHub issues in BaliLove/chat-langchain repository using GitHub CLI. For each issue, determine if it is: (1) Still relevant and actionable, (2) Already resolved but not closed, (3) Duplicate of another issue, (4) Test failure that has been superseded. Only close issues that are genuinely obsolete or resolved. Use `gh issue list --repo BaliLove/chat-langchain --state all`, then `gh issue view {number}` to review each issue content. Close only when clearly justified with specific reasoning in closing comment. Quality over quantity - proper review is more important than closing many issues.',
+      'aibl-test-fixer': 'Systematically address all frontend test failures in AIBL project. Analyze failing tests, identify root causes, implement fixes, and ensure test suite is stable. Work through issues #246-#276 methodically.',
+      'aibl-milestone-prep': 'Prepare all AIBL issues for September 7 milestone. Review issue priorities, update assignments, ensure all critical issues are on track, and flag any blockers for management attention.',
+      'bl2-bug-fixer': 'Address critical BL2 bugs systematically. Focus on wishlist issues (#145), catalog bugs (#144), and other user-facing problems. Prioritize by user impact and business value.',
+      'bl2-milestone-prep': 'Prepare BL2 for 2nd Release milestone. Review all issues, update status based on progress, ensure proper prioritization, and coordinate with development team.'
     }
 
     const command = agentCommands[agentId] || `Run ${agentName} agent`
     
-    // Handle different command types
-    let fullCommand: string
+    // Convert forward slashes to backslashes for Windows
+    const windowsPath = projectPath.replace(/\//g, '\\')
+    
+    // Use PowerShell module directly - the working approach we tested
+    let psCommand: string
     
     if (agentId.includes('-launch')) {
-      // Launch plain Claude without specific agent
-      fullCommand = `cmd.exe /c "cd /d "${projectPath}" && start cmd.exe /k "claude --dangerously-skip-permissions""` 
+      // Launch plain Claude without specific agent  
+      psCommand = `powershell -Command "Import-Module 'C:\\Users\\User\\Desktop\\Claude-Agent-Dashboard\\AgentManager.psm1' -Force; Start-ClaudeAgent -ProjectPath '${windowsPath}' -AgentCommand '' -AgentName '${agentName}' -ProjectName '${projectName}'"`
     } else {
       // Launch Claude with specific agent command
-      fullCommand = `cmd.exe /c "cd /d "${projectPath}" && start cmd.exe /k "claude --dangerously-skip-permissions '${command}'""` 
+      psCommand = `powershell -Command "Import-Module 'C:\\Users\\User\\Desktop\\Claude-Agent-Dashboard\\AgentManager.psm1' -Force; Start-ClaudeAgent -ProjectPath '${windowsPath}' -AgentCommand '${command}' -AgentName '${agentName}' -ProjectName '${projectName}'"`
     }
 
-    await execAsync(fullCommand)
+    console.log('Executing PowerShell command:', psCommand)
+    const result = await execAsync(psCommand)
+    
+    console.log('PowerShell stdout:', result.stdout)
+    console.log('PowerShell stderr:', result.stderr)
+    
+    const success = result.stdout.includes('SUCCESS:') || result.stderr.includes('SUCCESS:')
 
     // Log the execution for tracking
     const logEntry = {
@@ -88,8 +104,10 @@ export async function POST(req: NextRequest) {
     console.log('Agent execution logged:', logEntry)
 
     return NextResponse.json({ 
-      success: true, 
-      message: `Launched ${agentName} in ${projectPath}`,
+      success, 
+      message: success ? `Launched ${agentName} in ${projectPath}` : `Failed to launch ${agentName}`,
+      stdout: result.stdout,
+      stderr: result.stderr,
       logEntry 
     })
 

@@ -1,0 +1,15 @@
+<div class="top-cat topCatDesk animated fadeInDown">
+  {% assign top_menu = linklists['top-categories'] %}
+  <ul>
+    <li>
+      <p>Top Categories : </p>
+    </li>
+    {% for link in top_menu.links %}
+    <li>
+      <a href="{{ link.url }}" class="top-cat-link">
+          {{ link.title }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

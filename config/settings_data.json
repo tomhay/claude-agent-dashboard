@@ -1,0 +1,239 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "border_color": "#000000",
+    "link_color": "#8c50a4",
+    "link_hover_color": "#29a7df",
+    "banner_heading_color": "#000000",
+    "divider_color": "#cfcfcf",
+    "header_background": "#ffffff",
+    "header_link_color": "#000000",
+    "header_link_hover_color": "#29a7df",
+    "header_cart_badge_color": "#000000",
+    "dropdown_link_hover_color": "#29a7df",
+    "footer_background": "#29a7df",
+    "footer_link_hover_color": "#8c50a4",
+    "sale_color": "#cf0259",
+    "was_price_color": "#9f9f9f",
+    "banner_bestseller": "#29a7df",
+    "banner_comingsoon": "#cf0259",
+    "banner_new": "#506dd0",
+    "banner_preorder": "#ffffff",
+    "banner_sale": "#8c50a4",
+    "banner_staffpick": "#ff9705",
+    "qty_icon_color": "#FFFFFF",
+    "qty_icon_hover_color": "#000000",
+    "qty_background_color": "#8c50a4",
+    "qty_background_hover_color": "#8c50a4",
+    "regular__font": "source_sans_pro_n4",
+    "regular_font_size": 16,
+    "logo__font": "raleway_n6",
+    "logo_font_style": "lowercase",
+    "nav__font": "source_sans_pro_n6",
+    "nav_font_size": 14,
+    "nav_font_style": "uppercase",
+    "dropdown_heading_font_size": 30,
+    "dropdown_font_size": 15,
+    "button__font": "source_sans_pro_n4",
+    "button_letter_spacing": 1,
+    "button_font_style": "uppercase",
+    "heading__font": "source_sans_pro_n4",
+    "heading_size": 32,
+    "preheading_font": "source_sans_pro_n4",
+    "subheading_font": "source_sans_pro_n4",
+    "banner_heading__font": "source_sans_pro_n4",
+    "banner_text__font": "source_sans_pro_n4",
+    "banner_text_size": 16,
+    "show_announcement_bar": false,
+    "header_layout": "search_focus",
+    "image_loading_style": "none",
+    "show_currency_selector": false,
+    "mobile_menu_link_color": "#000000",
+    "mobile_menu_link_hover_color": "#000000",
+    "button_primary_bg_color": "#8c50a4",
+    "button_primary_bg_color--highlight": "#29a7df",
+    "button_primary_border_radius": 35,
+    "button_cart_bg_color": "#8c50a4",
+    "button_cart_bg_color--highlight": "#29a7df",
+    "button_cart_border_radius": 35,
+    "icon": "icon_outline",
+    "heading_divider_animation": "none",
+    "heading_divider_style": "short",
+    "enable_shopify_collection_badges": false,
+    "display_vendor": false,
+    "thumbnail_hover_enabled": false,
+    "thumbnail_text_alignment": "center",
+    "stickers_enabled": false,
+    "sticker_shape": "round",
+    "sticker_position": "right",
+    "collection_swatches": false,
+    "collection_swatches_shape": "circle",
+    "select_first_available_variant": true,
+    "display_product_quantity": true,
+    "limit_quantity": false,
+    "free_price_text": "",
+    "product_form_style": "radio",
+    "sold_out_options": "selectable",
+    "enable_swatches": false,
+    "swatch_style": "rounded",
+    "swatches_option_style": "color_swatch",
+    "notify_me_form": false,
+    "enable_quickshop": true,
+    "quickshop_button_style": "button--secondary",
+    "search_display_style": "popup",
+    "search_menu": "categories",
+    "email_link": "info@mydiffability.com.au",
+    "facebook_link": "https://www.facebook.com/mydiffability",
+    "instagram_link": "https://www.instagram.com/mydiffability_aus/",
+    "youtube_link": "https://www.youtube.com/channel/UCT-TD5z-YlJ_j6Dn3YBDhUQ",
+    "favicon": "shopify://shop_images/MYDIFFLOGOsocialJPEG.jpg",
+    "display_special_instructions": true,
+    "display_savings": true,
+    "display_ajax_quantity_box": true,
+    "cart_message": "",
+    "enable_shipping_calculator": false,
+    "shipping_calculator_default_country": "Australia",
+    "mega_menu_1": true,
+    "sections": {
+      "mega-menu-1": {
+        "type": "mega-menu-1",
+        "blocks": {
+          "mega-menu-1-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-1-1": {
+            "type": "featured_promo",
+            "settings": {
+              "richtext": "<p>Add description and links to your promotion</p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "",
+              "button_label": "Shop now",
+              "button_style": "button--primary"
+            }
+          },
+          "mega-menu-1-2": {
+            "type": "mixed",
+            "settings": {
+              "richtext_top": "Your headline",
+              "image_link_top": "",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-1-4": {
+            "type": "image",
+            "settings": {
+              "image_link": "",
+              "image_caption": "<p>Image caption appears here</p>"
+            }
+          },
+          "mega-menu-1-5": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-1-0",
+          "mega-menu-1-1",
+          "mega-menu-1-2",
+          "mega-menu-1-4",
+          "mega-menu-1-5"
+        ],
+        "settings": {
+          "parent_link": "catalog",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#f6f6f6",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": true,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": "",
+          "custom_css": ""
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "1744161739547163668": {
+        "type": "shopify://apps/hextom-timer-bar/blocks/ctb-embeded-block/f7b88b6e-2e87-46bc-87a9-3e3638a24fa9",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "6669472678111279317": {
+        "type": "shopify://apps/qteedy/blocks/script_tag/fe69a84a-7558-4693-b16c-57a414940105",
+        "disabled": false,
+        "settings": {}
+      },
+      "17676059084223943535": {
+        "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
+        "disabled": false,
+        "settings": {}
+      },
+      "14952540001915115444": {
+        "type": "shopify://apps/upcart-cart-drawer/blocks/app-embed/af3da5fb-f5f7-40ec-8273-41bf50059d4b",
+        "disabled": false,
+        "settings": {}
+      },
+      "7570552984445421165": {
+        "type": "shopify://apps/yotpo-product-reviews/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {}
+      },
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "button_color": "#29a7df",
+          "secondary_color": "#ffffff",
+          "ternary_color": "#6a6a6a",
+          "button_icon": "chat_bubble",
+          "button_text": "live_chat",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "greeting_message": "👋Hi, please feel free to message us and we'll be happy to help!"
+        }
+      }
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".header__menu-items [data-navlink-handle=\"easter-sale\"] a {color: #fff; background: #8a55a2; padding: 6px 18px; border-radius: 50px;}",
+      ".mobile-menu__list [data-mobile-menu-navlink-handle=\"easter-sale\"] a {color: #fff; background: #8a55a2; padding: 6px 18px; border-radius: 50px;}",
+      ".header .navbar-link {font-size: 13px;}"
+    ]
+  }
+}

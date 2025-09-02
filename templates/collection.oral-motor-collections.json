@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "fallback_image_banner",
+      "disabled": true,
+      "settings": {
+        "image_darken": true,
+        "width": "wide",
+        "banner_height": "medium",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "collection__main",
+      "blocks": {
+        "tag_filter_YB8N64": {
+          "type": "tag_filter",
+          "settings": {
+            "title": "Filter By Strength",
+            "filter_tags": "Soft,Medium,Tough",
+            "enable_filter_swatches": false
+          }
+        },
+        "tag_filter_FNizd6": {
+          "type": "tag_filter",
+          "settings": {
+            "title": "Filter by Product Type",
+            "filter_tags": "Necklace,Handheld Chewy",
+            "enable_filter_swatches": false
+          }
+        }
+      },
+      "block_order": [
+        "tag_filter_YB8N64",
+        "tag_filter_FNizd6"
+      ],
+      "settings": {
+        "collection_breadcrumb": true,
+        "collection_tags": false,
+        "collection_sort": true,
+        "show_sidebar": true,
+        "sidebar_position": "left",
+        "show_promo_banner": false,
+        "image_darken": true,
+        "promo_title": "",
+        "promo_text": "",
+        "banner_height": "medium",
+        "align_height": true,
+        "collection_height": 400,
+        "products_per_row": 4,
+        "mobile_products_per_row": "2",
+        "pagination_limit": 24,
+        "pagination_type": "load_more",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

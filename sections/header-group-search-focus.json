@@ -1,0 +1,328 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "homepage_only": false,
+        "enable_sticky": false,
+        "show_close_icon": false,
+        "icon_label": "Bolt",
+        "text": "<p>Neuro-affirming Inclusion Specialists</p>",
+        "mobile_text": "",
+        "alignment": "center",
+        "size": "regular",
+        "button_label": "SHOP TOOLS FOR SCHOOL",
+        "link": "shopify://collections/tools-for-school",
+        "button_style": "button--link-style",
+        "background": "#8c50a4",
+        "text_color": "#ffffff",
+        "width": "standard",
+        "css_class": "announcement-link",
+        "custom_css": ".announcement-link a {\ncolor: #FFF;\nborder-bottom: 1px solid #FFF;\n}"
+      }
+    },
+    "header_top-bar": {
+      "type": "header__top-bar",
+      "blocks": {
+        "menu_d4CiJn": {
+          "type": "menu",
+          "settings": {
+            "menu": "top-bar",
+            "menu_alignment": "start"
+          }
+        },
+        "header__top-bar-1": {
+          "type": "social_media",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "menu_d4CiJn",
+        "header__top-bar-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "background": "#ffffff",
+        "link_color": "rgba(0,0,0,0)",
+        "link_hover_color": "rgba(0,0,0,0)",
+        "text_color": "#29a7df",
+        "font": "open_sans_n4",
+        "font_style": "uppercase",
+        "font_size": 16,
+        "letter_spacing": 2,
+        "show_locale_selector": true,
+        "show_currency_selector": false,
+        "width": "standard",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "header": {
+      "type": "header-search-focus",
+      "settings": {
+        "logo": "shopify://shop_images/my-diffability-logo-tb.png",
+        "logo_width": 300,
+        "search_background": "#363636",
+        "search_icon": "#ffffff",
+        "icon_style": "icons",
+        "main_linklist": "menu-new",
+        "menu_alignment": "center",
+        "dropdown_click": false,
+        "enable_sticky": true,
+        "sticky_background_opacity": 100,
+        "scroll_logo_width": 300,
+        "width": "wide",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_2": {
+      "type": "mega-menu",
+      "blocks": {
+        "mega-menu-2-2": {
+          "type": "mixed",
+          "settings": {
+            "richtext_top": "",
+            "image_link_top": "",
+            "image_caption_top": "",
+            "menu_1": "sensory",
+            "menu_1_link": "shopify://collections/sensory-resources",
+            "menu_2": "",
+            "menu_2_link": "",
+            "menu_3": "",
+            "menu_3_link": "",
+            "menu_4": "",
+            "menu_4_link": "",
+            "image_link_bottom": "",
+            "richtext_bottom": ""
+          }
+        },
+        "1559246020796": {
+          "type": "mixed",
+          "settings": {
+            "richtext_top": "",
+            "image_link_top": "",
+            "image_caption_top": "",
+            "menu_1": "social",
+            "menu_1_link": "shopify://collections/communication-1",
+            "menu_2": "",
+            "menu_2_link": "",
+            "menu_3": "",
+            "menu_3_link": "",
+            "menu_4": "",
+            "menu_4_link": "",
+            "image_link_bottom": "shopify://collections",
+            "richtext_bottom": ""
+          }
+        },
+        "c6f411c5-ba89-4418-864a-6f55a100a778": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "motor-skills-resources",
+            "menu_1_link": "shopify://collections/motor-skills-resources"
+          }
+        },
+        "menu_eJfNWj": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "under-shop-all",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "mega-menu-2-2",
+        "1559246020796",
+        "c6f411c5-ba89-4418-864a-6f55a100a778",
+        "menu_eJfNWj"
+      ],
+      "settings": {
+        "parent_link": "shop-all",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#506dd0",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "checkmark",
+        "mega_bottom_bar_text": "We are a registered NDIS provider.",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#506dd0",
+        "bottom_banner_text": "#ffffff",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_PfNF96": {
+      "type": "mega-menu",
+      "blocks": {
+        "menu_4bbFwW": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "gifts",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_4bbFwW"
+      ],
+      "settings": {
+        "parent_link": "gifts",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#404040",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#ffffff",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_pBpDtP": {
+      "type": "mega-menu",
+      "blocks": {
+        "menu_p9J8bk": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "sensory",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_p9J8bk"
+      ],
+      "settings": {
+        "parent_link": "sensory",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#404040",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_7Eb3cp": {
+      "type": "mega-menu",
+      "blocks": {
+        "menu_APqhXi": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "social",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_APqhXi"
+      ],
+      "settings": {
+        "parent_link": "social",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#404040",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_ehhdHi": {
+      "type": "mega-menu",
+      "blocks": {
+        "menu_ir44ex": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "motor-skills-resources",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_ir44ex"
+      ],
+      "settings": {
+        "parent_link": "motor skills",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#404040",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_J69DGt": {
+      "type": "mega-menu",
+      "blocks": {
+        "menu_ttbw8q": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "school-resources",
+            "menu_1_link": "shopify://collections/tools-for-school"
+          }
+        }
+      },
+      "block_order": [
+        "menu_ttbw8q"
+      ],
+      "settings": {
+        "parent_link": "school resources",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#404040",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "announcement_bar",
+    "header_top-bar",
+    "header",
+    "mega_menu_2",
+    "mega_menu_PfNF96",
+    "mega_menu_pBpDtP",
+    "mega_menu_7Eb3cp",
+    "mega_menu_ehhdHi",
+    "mega_menu_J69DGt"
+  ]
+}

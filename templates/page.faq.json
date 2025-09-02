@@ -1,0 +1,232 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner",
+      "disabled": true,
+      "settings": {
+        "image_darken": false,
+        "subtitle": "Subheading",
+        "width": "wide",
+        "banner_height": "medium",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_rich_text_Ht9aQN": {
+      "type": "index__rich-text",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "center",
+        "heading_size": 30,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 2,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "wide",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "page": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": true,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "index__faq",
+      "blocks": {
+        "16306825309648acac-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Placing An Order"
+          }
+        },
+        "content_ATmraW": {
+          "type": "content",
+          "settings": {
+            "title": "How do I know if the products I want to order are in stock?",
+            "answer": "<p>We hold large quantities of our products in stock in our warehouse. Sometimes however we may experience greater than expected demand for a product during busy times. If an item goes out of stock  it will show as 'out of stock' on our website. You can enter your email to be notified just as soon as it comes back in. If you happen to order something that is out of stock we will email you to let you know and to discuss options.</p>"
+          }
+        },
+        "16306825309648acac-1": {
+          "type": "content",
+          "settings": {
+            "title": "What are my payment options?",
+            "answer": "<p>My Diffability Australia currently accepts payments by credit and debit cards through Shopify Secure Online Payment Gateway at checkout. It is fast, 100% secure and simple to use. We also offer a range of other gateways including Paypal and Afterpay for your convenience. Ordering using NDIS? We have custom checkout options to cater for you too (see NDIS FAQs below).</p>"
+          }
+        },
+        "16306825309648acac-2": {
+          "type": "content",
+          "settings": {
+            "title": "I’m from a school/organisation - how do I order?",
+            "answer": "<p>The easiest way to order on behalf of a school or organisation is to simply checkout online and either pay with a credit card or select 'invoice' option if you'd like to pay later. </p><p>We will then send out your resources with an invoice for payment if you selected invoice option. If you would like your PO number on your invoice you can reference this in the notes at checkout. We do not require you to set up an account before ordering.</p><p>Alternatively, if you have a purchase order from a hospital, school or other organisation within Australia you can email your purchase order to <a href=\"mailto:info@mydiffability.com.au\" target=\"_blank\" title=\"mailto:info@mydiffability.com.au\">info@mydiffability.com.au</a> and it will be processed and sent out with an invoice for payment to be made 14 days from the invoice date. </p><p>Please do not send us an email of your purchase order if you have already placed an order online, as this will result in a duplicate order.</p>"
+          }
+        },
+        "16306825309648acac-3": {
+          "type": "content",
+          "settings": {
+            "title": "How do I get my receipt / Invoice for my order?",
+            "answer": "<p>After you order you will receive an order confirmation email with a link to download your tax invoice / receipt.</p>"
+          }
+        },
+        "content_FyEG9J": {
+          "type": "content",
+          "settings": {
+            "title": "What about GST?",
+            "answer": "<p>Products purchased from My Diffability Australia include GST, where applicable.</p>"
+          }
+        },
+        "content_3ppGLR": {
+          "type": "content",
+          "settings": {
+            "title": "What are Customer Accounts?",
+            "answer": "<p>At checkout, you are able to complete transactions as a guest, which means your information will not be stored. If you are a returning customer you may like to create an account to save your details for next time.</p>"
+          }
+        },
+        "16306825309648acac-4": {
+          "type": "heading",
+          "settings": {
+            "title": "NDIS Orders"
+          }
+        },
+        "16306825309648acac-5": {
+          "type": "content",
+          "settings": {
+            "title": "How do I use NDIS funding to purchase resources?",
+            "answer": "<p>The process varies depending on how your plan is managed (for example, whether you are self managed, plan managed or agency / NDIA managed).<a href=\"/pages/ndis-orders\"> See our information page here about how to order using NDIS funding.</a></p>"
+          }
+        },
+        "16306825309648acac-6": {
+          "type": "content",
+          "settings": {
+            "title": "How do I get an invoice for my NDIS Plan Manager?",
+            "answer": "<p>Select the NDIS plan manager payment option at checkout. Your order confirmation email will include a link to your invoice. which you can forward to your plan manager.</p><p><a href=\"/pages/ndis-orders\"><strong>See our NDIS information page here about how to order using NDIS funding</strong></a></p>"
+          }
+        },
+        "16306825309648acac-7": {
+          "type": "content",
+          "settings": {
+            "title": "How long does it take to process an NDIS order?",
+            "answer": "<p>Once we receive your <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSdp6AfiGfkO9HuPalOxmkJiKn0stg4dPC4iunKQPDJEiaiVdQ/viewform\">Service Agreement </a>, it can take up to 3 days to process your order. We will email you with an update if you order is approved or if there are any issues. NDIA can take up to 5 days to pay for the order, at which time your order will be shipped and you will receive an email with tracking details.</p>"
+          }
+        },
+        "heading_hcXJ3C": {
+          "type": "heading",
+          "settings": {
+            "title": "Shipping/Postage"
+          }
+        },
+        "content_Dc8WaY": {
+          "type": "content",
+          "settings": {
+            "title": "What are the shipping / postage costs?",
+            "answer": "<p>Shipping costs are based on the value of your order and will be calculated automatically for you at checkout.</p><p>We ship all orders via either Australia Post or Startrack Express, and use an express service whenever possible. <a href=\"https://www.mydiffability.com.au/pages/shipping-postage\">View our shipping rate table here.</a></p>"
+          }
+        },
+        "content_BrPYih": {
+          "type": "content",
+          "settings": {
+            "title": "Do you ship overseas?",
+            "answer": "<p>My Diffability Australia is proud to provide the same quality service to our neighbours in New Zealand and orders are accepted online, with payment via Eway (credit card only).</p><p>All goods are dispatched from our Australian warehouse, so rates are based on Australia Post shipping costs. All items are shipped with tracking for added security. Shipping costs are based on the total value of the order and will be displayed at checkout. <a href=\"https://www.mydiffability.com.au/pages/shipping-postage\">View our NZ rates here.</a></p><p>If you are ordering from outside of Australia or New Zealand, please<a href=\"/pages/contact-us\"> contact us </a>with your location and the products you would like to purchase and we will calculate shipping costs for you. Payment for overseas orders can only be accepted via eway (credit card).</p>"
+          }
+        },
+        "content_VVdYMW": {
+          "type": "content",
+          "settings": {
+            "title": "When will my order arrive?",
+            "answer": "<p>Please ensure you carefully review the address you have entered online and contact us as soon as possible if there is an error. </p><p>We aim to dispatch your order within 2-3 business days from the time payment is accepted. When your order has been dispatched we will email you to let you know and will include a tracking number (in most cases) for your reference. If there is an unexpected delay in sending all or part of your order we will contact you via email to let you know. If no-one is available to take delivery of your products, our carrier will leave a card advising of the next steps.</p>"
+          }
+        },
+        "heading_jKdjNK": {
+          "type": "heading",
+          "settings": {
+            "title": "Returns and refunds"
+          }
+        },
+        "content_ND8JMa": {
+          "type": "content",
+          "settings": {
+            "title": "What is your return policy?",
+            "answer": "<p>Please see our refund policy <a href=\"/pages/refund-policy\">here</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "16306825309648acac-0",
+        "content_ATmraW",
+        "16306825309648acac-1",
+        "16306825309648acac-2",
+        "16306825309648acac-3",
+        "content_FyEG9J",
+        "content_3ppGLR",
+        "16306825309648acac-4",
+        "16306825309648acac-5",
+        "16306825309648acac-6",
+        "16306825309648acac-7",
+        "heading_hcXJ3C",
+        "content_Dc8WaY",
+        "content_BrPYih",
+        "content_VVdYMW",
+        "heading_jKdjNK",
+        "content_ND8JMa"
+      ],
+      "settings": {
+        "title": "",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "animation": "none",
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "index_rich_text_Ht9aQN",
+    "page",
+    "main"
+  ]
+}

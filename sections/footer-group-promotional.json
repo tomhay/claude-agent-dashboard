@@ -1,0 +1,125 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer_icon_bar": {
+      "type": "footer__icon-bar",
+      "blocks": {
+        "footer__icon-bar-0": {
+          "type": "text",
+          "settings": {
+            "icon": "leaf-2",
+            "text": "recyclable packaging",
+            "link": ""
+          }
+        },
+        "footer__icon-bar-1": {
+          "type": "text",
+          "settings": {
+            "icon": "heart",
+            "text": "membership club",
+            "link": "#"
+          }
+        },
+        "footer__icon-bar-2": {
+          "type": "text",
+          "settings": {
+            "icon": "box",
+            "text": "delivery to your door",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "footer__icon-bar-0",
+        "footer__icon-bar-1",
+        "footer__icon-bar-2"
+      ],
+      "settings": {
+        "show_icon_bar": false,
+        "alignment": "center",
+        "icon_position": "column",
+        "size": "large",
+        "background": "#ffffff",
+        "link_color": "#000000",
+        "link_hover_color": "#69cec9",
+        "text_color": "#000000",
+        "width": "standard",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "footer": {
+      "type": "footer-promotional",
+      "blocks": {
+        "footer-promotional-1": {
+          "type": "link_list",
+          "settings": {
+            "menu_1": "who-we-are",
+            "menu_2": "shopping-with-us",
+            "menu_3": "legal-things"
+          }
+        },
+        "1564503511731": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_title": "Subscribe",
+            "newsletter_richtext": "<p>Sign up to get the latest on sales, new items and helpful information from our therapy team.</p>",
+            "display_first_name": false,
+            "display_last_name": false
+          }
+        },
+        "1564503504841": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/my-diffability-email_7874d420-461c-4deb-a00b-1904e1415a0a.png",
+            "size": "small",
+            "alignment": "start"
+          }
+        },
+        "1559243315579": {
+          "type": "social",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "footer-promotional-1",
+        "1564503511731",
+        "1564503504841",
+        "1559243315579"
+      ],
+      "settings": {
+        "copyright_text": "",
+        "display_designed_by": false,
+        "display_shopify": false,
+        "display_payment_methods": true,
+        "show_locale_selector": false,
+        "show_currency_selector": false,
+        "enable_promo": false,
+        "promo_background": "#e5e0e0",
+        "promo_text": "#000000",
+        "promo_position": "row",
+        "promo_image": "shopify://shop_images/notebook-and-coffee.jpg",
+        "richtext": "<p><a href=\"/pages/copy-of-blog\" title=\"Copy of Blog\"><strong>Check out our blog</strong></a><br/>Top tips, tricks and info from our allied health team.</p>",
+        "promo_link": "shopify://pages/copy-of-blog",
+        "button_label": "",
+        "button_style": "button--primary",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "footer_icon_bar",
+    "footer"
+  ]
+}

@@ -1,0 +1,131 @@
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+<section class="section is-width-wide featured_collections_ab {{ section.settings.css_class }}" 
+     style="background:{{ section.settings.background_color }};">
+  <div class="container collections-main-wrapper">
+    <div class="columns one-whole">
+      <div class="title-link-wrapper container">
+        <div class="title-wrap one-half">
+          <h2 class="heading-section__heading title">{{ section.settings.heading }}</h2>
+          <div class="heading-divider heading-divider--short animated slideInRight" data-scroll-class="slideInRight"></div>
+        </div>
+        <div class="link-wrap link-wrap-top one-half">
+          <a href="/collections">{{ section.settings.all_text }}</a>
+        </div>
+      </div>
+      <div class="collections-list container has-column-padding-bottom featured-collection layout--grid is-justify-center">
+        {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+          <div class="col-block one-fifth">
+            <div class="col-img-wrap image__container">
+              <a href="{{ collection.url }}">
+                <img src="{% if block.settings.image %}{{ block.settings.image | img_url: '150x150' }}{% else %}{{ collection.featured_image | img_url: '150x150' }}{% endif %}"/>
+              </a>
+            </div>
+            <div class="col-title-wrap text-align-center">
+              <a href="{{ collection.url }}">{% if block.settings.title != blank %}{{ block.settings.title }}{% else %}{{ collection.title }}{% endif %}</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="link-wrap link-wrap-bottom">
+        <a href="/collections">{{ section.settings.all_text }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Featured Collections AB",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "heading",
+        "label": "Section Heading"
+      },
+	  {
+        "type": "text",
+        "id": "all_text",
+        "label": "Shop All Text"
+      },
+      {
+        "type": "header",
+        "content": "Layout & Style"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background",
+        "default": "#939393"
+      },
+      {
+        "type": "header",
+        "content": "Advanced"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      }
+	],
+  	"blocks": [
+	  {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "The collection's featured image will be used as a fallback."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          }
+        ]
+      }
+	],
+    "presets": [
+      {
+        "name": "Featured Collections AB",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-content__main",
+      "settings": {
+        "show_heading": true,
+        "heading_alignment": "center",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_rich_text_zfB8jP": {
+      "type": "index__rich-text",
+      "name": "Rich text",
+      "settings": {
+        "title": "",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "center",
+        "heading_size": 20,
+        "text": "<p>If you have an <strong>NDIS Plan Manager</strong> and require any <strong>invoice to send directly to them for payment</strong>, we're here to help.</p><p>You can easily request an invoice by:<br/><br/><strong>1</strong>. Filling your online shopping cart with the items you want<br/><strong>2</strong>. Completing the form below with your details<br/><strong>3</strong>. Clicking the 'Create Invoice' button <br/><br/>Our team will process your request and you will receive your invoice within 24 hours. </p><p>You can then forward this to your Plan Manager to process. We will hold your order (for up to 2 weeks) until payment is received. </p><p>If you need any changes or additional information added to your invoice, please <a href=\"https://www.mydiffability.com.au/pages/contact-us\" target=\"_blank\" title=\"https://www.mydiffability.com.au/pages/contact-us\">contact us</a> and we will be more than happy to help.</p>",
+        "text_font": "open_sans_n4",
+        "text_alignment": "center",
+        "text_size": 14,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "#ffffff",
+        "gradient": "#ffffff",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "custom_liquid_7JdrwX": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "@media screen and (min-width: 800px) {#quote-content {width: 60%; }}",
+        "#quote-content {margin: 0 auto; margin-bottom: 50px;}"
+      ],
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"eq-email-wrapper has-padding-top content\" id=\"quote-content\">\n          <div class=\"field\"> \n            <label class=\"label\" for=\"cartEmail\">Customer Email*</label> \n            <div class=\"control\"> \n              <input type=\"text\" value=\"{{customer.email}}\" id=\"cartEmail\" class=\"input\" placeholder=\"Email address\">\n            </div>\n          </div>  \n          <!-- Additional form fields go here -->\n          <div class=\"field\"> \n            <label class=\"label\" for=\"FirstName\">First Name</label> \n            <div class=\"control\"> \n              <input name=\"first_name\" type=\"text\" value=\"{{customer.first_name}}\" id=\"FirstName\" class=\"input\" placeholder=\"First Name\">\n            </div>\n          </div>    \n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"LastName\">Last Name</label> \n            <div class=\"control\"> \n              <input name=\"last_name\" type=\"text\" value=\"{{customer.last_name}}\" id=\"LastName\" class=\"input\" placeholder=\"Last Name\">\n            </div>\n          </div>\n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"Phone\">Phone</label> \n            <div class=\"control\"> \n              <input name=\"phone\" type=\"text\" value=\"{{customer.default_address.phone}}\" id=\"Phone\" class=\"input\" placeholder=\"Phone\">\n            </div>\n          </div>\n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"Address1\">Address1</label> \n            <div class=\"control\"> \n              <input name=\"Address1\" type=\"text\" value=\"{{customer.default_address.address1}}\" id=\"Address1\" class=\"input\" placeholder=\"Address1\">\n            </div>\n          </div>  \n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"Address2\">Address2</label> \n            <div class=\"control\"> \n              <input name=\"Address2\" type=\"text\" value=\"{{customer.default_address.address2}}\" id=\"Address2\" class=\"input\" placeholder=\"Address2\">\n            </div>\n          </div>    \n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"City\">City</label> \n            <div class=\"control\"> \n              <input name=\"City\" type=\"text\" value=\"{{customer.default_address.city}}\" id=\"City\" class=\"input\" placeholder=\"City\">\n            </div>\n          </div>      \n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"State\">State</label> \n            <div class=\"control\"> \n              <input name=\"State\" type=\"text\" value=\"{{customer.default_address.province}}\" id=\"State\" class=\"input\" placeholder=\"State\">\n            </div>\n          </div>\n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"Postcode\">Postcode</label> \n            <div class=\"control\"> \n              <input name=\"Postcode\" type=\"text\" value=\"{{customer.default_address.zip}}\" id=\"Postcode\" class=\"input\" placeholder=\"Postcode\">\n            </div>\n          </div>\n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"Country\">Country</label> \n            <div class=\"control\"> \n              <input name=\"Country\" type=\"text\" value=\"{{customer.default_address.country}}\" id=\"Country\" class=\"input\" placeholder=\"Country\">\n            </div>\n          </div>\n\n          <div class=\"field\"> \n            <label class=\"label\" for=\"ndis\">NDIS/Client reference</label> \n            <div class=\"control\"> \n              <input name=\"NDIS/Client_reference\" type=\"text\" value=\"{{customer.default_address.country}}\" id=\"ndis\" class=\"input\" placeholder=\"NDIS Number, Participant's Name & Plan Manager (e.g. My Plan Manager)\">\n            </div>\n          </div>\n\n\n          <p id=\"easyquote-status\"></p>               \n          <a href=\"#\" class=\"button button--primary continue-button button is-within-form is-fullwidth\" id=\"create-quote\">Create invoice</a>\n        </div>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "index_rich_text_zfB8jP",
+    "custom_liquid_7JdrwX"
+  ]
+}

@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "6c84d1c3b3327528d3fec9aff0149826a817f61a",
+    "node_id": "C_kwDOPSFaF9oAKDZjODRkMWMzYjMzMjc1MjhkM2ZlYzlhZmYwMTQ5ODI2YTgxN2Y2MWE",
+    "commit": {
+      "author": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-27T04:40:17Z"
+      },
+      "committer": {
+        "name": "tomhay",
+        "email": "tom@tomhay.net",
+        "date": "2025-08-27T04:40:17Z"
+      },
+      "message": "feat: Complete Upify AI Performance Coach implementation\n\n✅ FEATURES IMPLEMENTED:\n- Full authentication system (sign up/in)\n- Client management for Shopify stores\n- AI Modules system with 8 optimization tools\n- Speed testing with Google PageSpeed API\n- Token-based billing system\n- Admin dashboard with analytics\n- Work order management system\n\n🧪 TESTING COMPLETED:\n- Manual UI testing confirms all features work\n- User registration and dashboard access ✓\n- Client creation and management ✓\n- Speed test execution ✓\n- AI modules configuration ✓\n\n⚠️ KNOWN ISSUES:\n- Next.js 15 canary async params TypeScript definitions\n- Build passes compilation but fails type checking\n- Runtime functionality fully operational\n\n🚀 READY FOR:\n- Production deployment (runtime works)\n- Follow-up PR to fix TypeScript issues\n- User testing and feedback collection",
+      "tree": {
+        "sha": "8debcbd12946ca9466f3eea3784147f097bded69",
+        "url": "https://api.github.com/repos/tomhay/upify/git/trees/8debcbd12946ca9466f3eea3784147f097bded69"
+      },
+      "url": "https://api.github.com/repos/tomhay/upify/git/commits/6c84d1c3b3327528d3fec9aff0149826a817f61a",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/tomhay/upify/commits/6c84d1c3b3327528d3fec9aff0149826a817f61a",
+    "html_url": "https://github.com/tomhay/upify/commit/6c84d1c3b3327528d3fec9aff0149826a817f61a",
+    "comments_url": "https://api.github.com/repos/tomhay/upify/commits/6c84d1c3b3327528d3fec9aff0149826a817f61a/comments",
+    "author": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tomhay",
+      "id": 181351,
+      "node_id": "MDQ6VXNlcjE4MTM1MQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/181351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomhay",
+      "html_url": "https://github.com/tomhay",
+      "followers_url": "https://api.github.com/users/tomhay/followers",
+      "following_url": "https://api.github.com/users/tomhay/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomhay/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomhay/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomhay/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomhay/orgs",
+      "repos_url": "https://api.github.com/users/tomhay/repos",
+      "events_url": "https://api.github.com/users/tomhay/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomhay/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "e0dc5d40ce26c01672557912b533d25e32957ad4",
+        "url": "https://api.github.com/repos/tomhay/upify/commits/e0dc5d40ce26c01672557912b533d25e32957ad4",
+        "html_url": "https://github.com/tomhay/upify/commit/e0dc5d40ce26c01672557912b533d25e32957ad4"
+      }
+    ]
+  }
+]

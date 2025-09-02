@@ -38,19 +38,39 @@ export async function GET(req: NextRequest) {
         repoName: repo
       }))
     } else {
-      // Get issues across all projects
+      // Get ALL issues across all projects with pagination
       const issuePromises = Object.entries(projectRepos).map(async ([projectName, { owner, repo }]) => {
         try {
-          const { data: issues } = await octokit.rest.issues.listForRepo({
-            owner,
-            repo,
-            state: 'open',
-            sort: 'updated',
-            direction: 'desc',
-            per_page: 20
-          })
+          let projectIssues: any[] = []
+          let page = 1
+          const perPage = 100
           
-          return issues.map(issue => ({
+          console.log(`Fetching ALL issues for ${projectName}`)
+          
+          while (true) {
+            const { data: pageIssues } = await octokit.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: 'all', // Get both open and closed issues
+              sort: 'updated',
+              direction: 'desc',
+              per_page: perPage,
+              page
+            })
+            
+            if (pageIssues.length === 0) break
+            
+            projectIssues = projectIssues.concat(pageIssues)
+            console.log(`${projectName} page ${page}: ${pageIssues.length} issues (total: ${projectIssues.length})`)
+            
+            if (pageIssues.length < perPage) break // Last page
+            page++
+            
+            // Safety limit
+            if (page > 50) break
+          }
+          
+          return projectIssues.map(issue => ({
             ...issue,
             project: projectName,
             repoName: repo
@@ -63,31 +83,61 @@ export async function GET(req: NextRequest) {
 
       const issueArrays = await Promise.all(issuePromises)
       allIssues = issueArrays.flat()
+      console.log(`Total issues fetched across all projects: ${allIssues.length}`)
     }
 
-    // Transform issues for our dashboard
-    const transformedIssues = allIssues.map(issue => ({
-      id: issue.id,
-      number: issue.number,
-      title: issue.title,
-      body: issue.body,
-      project: issue.project,
-      repoName: issue.repoName,
-      labels: issue.labels.map((label: any) => label.name),
-      assignee: issue.assignee?.login || null,
-      state: issue.state,
-      created_at: issue.created_at,
-      updated_at: issue.updated_at,
-      html_url: issue.html_url,
-      user: {
-        login: issue.user.login,
-        avatar_url: issue.user.avatar_url
-      },
-      // Determine workflow stage based on labels
-      stage: getWorkflowStage(issue.labels.map((l: any) => l.name)),
-      // Check if assigned to an agent
-      assignedAgent: getAssignedAgent(issue.labels.map((l: any) => l.name))
-    }))
+    // Get analytics data for enrichment
+    let analyticsMap = new Map()
+    try {
+      const analyticsResponse = await fetch(`${req.url.split('/api')[0]}/api/issue-tracking`)
+      if (analyticsResponse.ok) {
+        const analyticsData = await analyticsResponse.json()
+        analyticsData.issueTracking.forEach((item: any) => {
+          analyticsMap.set(`${item.project}-${item.issue.number}`, item)
+        })
+      }
+    } catch (error) {
+      console.log('Analytics enrichment failed, continuing without:', error)
+    }
+
+    // Transform issues for our dashboard with manager analytics
+    const transformedIssues = allIssues.map(issue => {
+      const issueKey = `${issue.project}-${issue.number}`
+      const analytics = analyticsMap.get(issueKey)
+      
+      return {
+        id: issue.id,
+        number: issue.number,
+        title: issue.title,
+        body: issue.body,
+        project: issue.project,
+        repoName: issue.repoName,
+        labels: issue.labels.map((label: any) => label.name),
+        assignee: issue.assignee?.login || null,
+        state: issue.state,
+        created_at: issue.created_at,
+        updated_at: issue.updated_at,
+        html_url: issue.html_url,
+        user: {
+          login: issue.user.login,
+          avatar_url: issue.user.avatar_url
+        },
+        // Workflow stage based on labels
+        stage: getWorkflowStage(issue.labels.map((l: any) => l.name)),
+        // Agent assignment
+        assignedAgent: getAssignedAgent(issue.labels.map((l: any) => l.name)),
+        
+        // Manager Analytics Integration
+        agentEstimate: analytics?.agentEstimate || null,
+        commitReality: analytics?.reality || null,
+        managerStatus: analytics?.tracking?.status || 'unknown',
+        completionPrediction: analytics?.tracking?.completionPrediction || null,
+        coachingInsights: analytics?.tracking?.coachingInsights || [],
+        managerFlags: analytics?.tracking?.managerFlags || [],
+        commitCount: analytics?.commits?.length || 0,
+        lastCommitDate: analytics?.commits?.[0]?.date || null
+      }
+    })
 
     return NextResponse.json({
       success: true,

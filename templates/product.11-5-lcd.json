@@ -1,0 +1,215 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "product__breadcrumb",
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "sidebar": {
+      "type": "product__sidebar",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "product__main",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient_form": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "form",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "product_images_position": "left",
+        "set_product_height": false,
+        "product_height": 500,
+        "video_looping": false,
+        "gallery_arrows": true,
+        "enable_zoom": true,
+        "enable_product_lightbox": true,
+        "slideshow_speed": 0,
+        "slideshow_transition": "slide",
+        "display_thumbnails": true,
+        "thumbnail_position": "bottom-thumbnails",
+        "enable_thumbnail_slider": true,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "17502119224e77141a": {
+      "type": "apps",
+      "blocks": {
+        "theme_updater_backups_collapsible_row_JqczhC": {
+          "type": "shopify://apps/theme-updater-backups/blocks/collapsible-row/a2dccebe-2431-46d6-8882-a40d69d88b0f",
+          "settings": {
+            "row_heading": "Product Details",
+            "heading_size": 24,
+            "mobile_heading_size": 16,
+            "row_content": "<ul><li>Black 11.5\" LCD Board</li><li>USB charging. No batteries required</li><li>Monochrome image</li><li>Rounder dual tip stylus (most others have a flat stylus) which is great for those still developing pencil grip or who have hand function difficulties</li><li>Stylus clips securely into storage area on board when not in use</li><li>Select preferred screen mode - lock or unlock via switch on the back</li><li>Easy delete button when in 'unlock' mode</li><li>Approximate weight 210 g</li><li>PLEASE NOTE:  LCD board may require charging on arrival prior to use<br/><br/></li></ul>",
+            "row_content_from_page": "",
+            "text_size": 15,
+            "mobile_text_size": 15,
+            "text_color": "#000000",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "theme_updater_backups_collapsible_row_K7ND83": {
+          "type": "shopify://apps/theme-updater-backups/blocks/collapsible-row/a2dccebe-2431-46d6-8882-a40d69d88b0f",
+          "settings": {
+            "row_heading": "Product Care",
+            "heading_size": 24,
+            "mobile_heading_size": 16,
+            "row_content": "<ul><li>Avoid exposure over 40 degrees or minus 5 degrees</li><li>Do not leave in a hot car</li><li>Avoid using sharp objects or sticky items on the screen</li><li>Avoid dropping</li><li>Do not immerse in water</li><li>Use a soft dry cloth to clean</li></ul>",
+            "row_content_from_page": "",
+            "text_size": 15,
+            "mobile_text_size": 15,
+            "text_color": "#000000",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "theme_updater_backups_collapsible_row_Ay7maN": {
+          "type": "shopify://apps/theme-updater-backups/blocks/collapsible-row/a2dccebe-2431-46d6-8882-a40d69d88b0f",
+          "settings": {
+            "row_heading": "Refunds & Returns",
+            "heading_size": 24,
+            "mobile_heading_size": 16,
+            "row_content": "<p>At My Diffability Australia we pride ourselves on our quality products and friendly customer service. </p><p>If a product is damaged in transit or faulty when received we will offer you a replacement, credit or a refund as per our <a href=\"https://www.mydiffability.com.au/pages/refund-policy\" target=\"_blank\" title=\"Refunds & Returns\">Refunds & Returns Policy</a>.</p>",
+            "row_content_from_page": "",
+            "text_size": 15,
+            "mobile_text_size": 15,
+            "text_color": "#000000",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "theme_updater_backups_collapsible_row_KYUYt4": {
+          "type": "shopify://apps/theme-updater-backups/blocks/collapsible-row/a2dccebe-2431-46d6-8882-a40d69d88b0f",
+          "settings": {
+            "row_heading": "Shipping",
+            "heading_size": 24,
+            "mobile_heading_size": 16,
+            "row_content": "<p>We’ve partnered with Australia Post for all of our deliveries because they’ve consistently proven to be a reliable and cost-effective option for our customers.</p><p>We trust them to get your order to you safely and on time and we’ll always provide tracking details so you can follow your parcel every step of the way.</p><p>We aim to dispatch your order within 2-3 business days from the time payment is accepted.</p><p><a href=\"https://www.mydiffability.com.au/pages/shipping-postage\" target=\"_blank\" title=\"Shipping\">Shipping costs</a> will be calculated automatically for you at checkout.</p>",
+            "row_content_from_page": "",
+            "text_size": 15,
+            "mobile_text_size": 15,
+            "text_color": "#000000",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "theme_updater_backups_collapsible_row_JqczhC",
+        "theme_updater_backups_collapsible_row_K7ND83",
+        "theme_updater_backups_collapsible_row_Ay7maN",
+        "theme_updater_backups_collapsible_row_KYUYt4"
+      ],
+      "settings": {
+        "width": "standard",
+        "section_width": "half",
+        "section_alignment": "right",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "17502119545d78d173": {
+      "type": "apps",
+      "settings": {
+        "width": "standard",
+        "section_width": "whole",
+        "section_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "recommendations": {
+      "type": "product__recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_style": "grid",
+        "product_recommendations_heading": "Other customers also purchased",
+        "products_per": 4,
+        "recommended_products_limit": 4,
+        "align_height": false,
+        "collection_height": 230,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "animation": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "yotpo_product_page_reviews_X8qGxy": {
+      "type": "yotpo-product-page-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "sidebar",
+    "main",
+    "17502119224e77141a",
+    "17502119545d78d173",
+    "recommendations",
+    "yotpo_product_page_reviews_X8qGxy"
+  ]
+}

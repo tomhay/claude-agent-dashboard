@@ -1,0 +1,72 @@
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+
+<div id="recently-viewed-products" class="container clearfix section__wrapper" style="display:none">
+  <div class="heading-wrapper
+            heading-wrapper--short
+            one-whole column
+            is-flex
+            is-flex-column
+            is-align-center
+            text-align-center">
+    <h4 class="title">Recently Viewed Products</h4>
+  </div>
+</div>
+
+{% raw %}
+<script id="recently-viewed-product-template"  type="text/x-jquery-tmpl">
+<div id="product-${handle}" class="one-fourth 
+  medium-down--one-half 
+  small-down--one-half 
+  column has-thumbnail-sticker 
+  thumbnail product__thumbnail 
+  product__grid-item 
+  thumbnail__hover-overlay--false 
+  has-padding-bottom">
+  <div class="product-image__wrapper">
+    <div class="image__container product__imageContainer">
+      <a href="${url}">     
+      <div class="image-element__wrap" style="
+            max-height: 230px; width: calc(500 /  500 * 230px);
+         ">
+        <img class="transition--fade-in lazyload" data-src="" sizes="230px" src="${featured_image}">
+      </div>
+      <noscript class="noscript">
+        <img class="" src="${featured_image}">
+      </noscript>     
+      </a>
+    </div>
+  </div>
+  <div class="thumbnail__caption text-align-center">
+    <div class="product-thumbnail">
+  	  <a href="${url}" class="product-thumbnail__title">${title}</a>
+	  <span class="product-thumbnail__price price ">
+      	<span class="money">{{if price_varies}}<small><em>from</em></small> {{/if}}${Shopify.formatMoney(price)}</span>
+      </span>
+  	</div>
+  </div>
+</div>
+</script>
+{% endraw %}
+
+<script>
+Shopify.Products.showRecentlyViewed( { howManyToShow:4 } );
+</script>
+
+<style>
+  #recently-viewed-products {
+    width: 100%;
+  }
+  @media only screen and (max-width: 797px) {
+    #recently-viewed-products {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    #recently-viewed-products .title {
+      margin-bottom: 15px;
+    } 
+    .product #recently-viewed-products {
+      padding-top: 40px;
+    }
+  }
+</style>

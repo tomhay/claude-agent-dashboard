@@ -49,6 +49,30 @@ interface GitHubIssue {
   }
   stage: string
   assignedAgent: string | null
+  
+  // Manager Analytics
+  agentEstimate?: {
+    estimatedHours: number
+    complexity: string
+    confidence: number
+  } | null
+  commitReality?: {
+    hasStarted: boolean
+    daysWorked: number
+    commitCount: number
+    velocity: number
+    pattern: string
+  } | null
+  managerStatus?: string
+  completionPrediction?: {
+    predictedDate: string
+    confidence: number
+    method: string
+  } | null
+  coachingInsights?: string[]
+  managerFlags?: string[]
+  commitCount?: number
+  lastCommitDate?: string | null
 }
 
 interface IssuesTableProps {
@@ -276,26 +300,161 @@ export default function IssuesTable({ issues, onAssignAgent, onViewIssue, agents
         sortingFn: 'datetime',
       },
       {
-        accessorKey: 'priority',
-        header: 'Priority',
+        accessorKey: 'agentEstimate',
+        header: 'Agent Estimate',
         cell: ({ row }) => {
-          const priority = getPriorityFromLabels(row.original.labels)
-          const colors = {
-            high: 'bg-red-100 text-red-700',
-            medium: 'bg-yellow-100 text-yellow-700',
-            low: 'bg-green-100 text-green-700'
-          }
+          const estimate = row.original.agentEstimate
+          if (!estimate) return <span className="text-xs text-gray-400">-</span>
+          
           return (
-            <span className={`px-2 py-1 rounded text-xs font-medium ${colors[priority]}`}>
-              {priority}
-            </span>
+            <div className="text-xs">
+              <div className="font-medium">{estimate.estimatedHours}h</div>
+              <div className="text-gray-500">{estimate.complexity}</div>
+              <div className="text-gray-400">{Math.round(estimate.confidence * 100)}% confident</div>
+            </div>
           )
         },
         sortingFn: (rowA, rowB) => {
-          const priorityOrder = { high: 3, medium: 2, low: 1 }
-          const priorityA = getPriorityFromLabels(rowA.original.labels)
-          const priorityB = getPriorityFromLabels(rowB.original.labels)
-          return priorityOrder[priorityA] - priorityOrder[priorityB]
+          const estA = rowA.original.agentEstimate?.estimatedHours || 0
+          const estB = rowB.original.agentEstimate?.estimatedHours || 0
+          return estA - estB
+        },
+      },
+      {
+        accessorKey: 'commitReality',
+        header: 'Reality Check',
+        cell: ({ row }) => {
+          const reality = row.original.commitReality
+          const commits = row.original.commitCount || 0
+          
+          if (!reality?.hasStarted) {
+            return <div className="text-xs text-gray-400">Not started</div>
+          }
+          
+          const statusColors = {
+            'steady': 'text-green-600',
+            'high-velocity': 'text-blue-600', 
+            'slow-progress': 'text-yellow-600',
+            'stale': 'text-red-600'
+          }
+          
+          return (
+            <div className="text-xs">
+              <div className="font-medium">{reality.daysWorked} days</div>
+              <div className="text-gray-600">{commits} commits</div>
+              <div className={`${statusColors[reality.pattern as keyof typeof statusColors] || 'text-gray-500'}`}>
+                {reality.pattern}
+              </div>
+            </div>
+          )
+        },
+        sortingFn: (rowA, rowB) => {
+          const daysA = rowA.original.commitReality?.daysWorked || 0
+          const daysB = rowB.original.commitReality?.daysWorked || 0
+          return daysA - daysB
+        },
+      },
+      {
+        accessorKey: 'managerStatus',
+        header: 'Status',
+        cell: ({ row }) => {
+          const status = row.original.managerStatus
+          const flags = row.original.managerFlags || []
+          
+          const statusConfig = {
+            'on-track': { color: 'bg-green-100 text-green-700', icon: '✅' },
+            'at-risk': { color: 'bg-yellow-100 text-yellow-700', icon: '⚠️' },
+            'overdue': { color: 'bg-red-100 text-red-700', icon: '🚨' },
+            'not-started': { color: 'bg-gray-100 text-gray-700', icon: '⏸️' },
+            'unknown': { color: 'bg-gray-100 text-gray-500', icon: '❓' }
+          }
+          
+          const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.unknown
+          
+          return (
+            <div className="text-xs">
+              <span className={`px-2 py-1 rounded font-medium flex items-center gap-1 ${config.color}`}>
+                <span>{config.icon}</span>
+                {status}
+              </span>
+              {flags.length > 0 && (
+                <div className="mt-1 text-red-600" title={flags.join(', ')}>
+                  🚩 {flags.length} alert{flags.length > 1 ? 's' : ''}
+                </div>
+              )}
+            </div>
+          )
+        },
+        sortingFn: (rowA, rowB) => {
+          const statusOrder = { 'overdue': 4, 'at-risk': 3, 'not-started': 2, 'on-track': 1, 'unknown': 0 }
+          const statusA = statusOrder[rowA.original.managerStatus as keyof typeof statusOrder] || 0
+          const statusB = statusOrder[rowB.original.managerStatus as keyof typeof statusOrder] || 0
+          return statusB - statusA // Highest priority first
+        },
+      },
+      {
+        accessorKey: 'completionPrediction',
+        header: 'Predicted Completion',
+        cell: ({ row }) => {
+          const prediction = row.original.completionPrediction
+          if (!prediction) return <span className="text-xs text-gray-400">-</span>
+          
+          const date = new Date(prediction.predictedDate)
+          const isOverdue = date < new Date()
+          const daysFromNow = Math.ceil((date.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+          
+          return (
+            <div className="text-xs">
+              <div className={`font-medium ${isOverdue ? 'text-red-600' : daysFromNow <= 3 ? 'text-yellow-600' : 'text-gray-900'}`}>
+                {daysFromNow <= 0 ? 'Overdue' : 
+                 daysFromNow === 1 ? 'Tomorrow' :
+                 daysFromNow <= 7 ? `${daysFromNow} days` :
+                 date.toLocaleDateString()}
+              </div>
+              <div className="text-gray-500">{Math.round(prediction.confidence * 100)}% confidence</div>
+              <div className="text-gray-400">{prediction.method}</div>
+            </div>
+          )
+        },
+        sortingFn: (rowA, rowB) => {
+          const dateA = rowA.original.completionPrediction?.predictedDate ? new Date(rowA.original.completionPrediction.predictedDate).getTime() : Infinity
+          const dateB = rowB.original.completionPrediction?.predictedDate ? new Date(rowB.original.completionPrediction.predictedDate).getTime() : Infinity
+          return dateA - dateB
+        },
+      },
+      {
+        accessorKey: 'lastCommitDate',
+        header: 'Last Activity',
+        cell: ({ row }) => {
+          const lastCommit = row.original.lastCommitDate
+          const commitCount = row.original.commitCount || 0
+          
+          if (!lastCommit) {
+            return <div className="text-xs text-gray-400">No commits</div>
+          }
+          
+          const date = new Date(lastCommit)
+          const daysAgo = Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24))
+          
+          const activityColor = daysAgo === 0 ? 'text-green-600' :
+                               daysAgo <= 3 ? 'text-blue-600' :
+                               daysAgo <= 7 ? 'text-yellow-600' : 'text-red-600'
+          
+          return (
+            <div className="text-xs">
+              <div className={`font-medium ${activityColor}`}>
+                {daysAgo === 0 ? 'Today' :
+                 daysAgo === 1 ? 'Yesterday' :
+                 `${daysAgo} days ago`}
+              </div>
+              <div className="text-gray-600">{commitCount} total commits</div>
+            </div>
+          )
+        },
+        sortingFn: (rowA, rowB) => {
+          const dateA = rowA.original.lastCommitDate ? new Date(rowA.original.lastCommitDate).getTime() : 0
+          const dateB = rowB.original.lastCommitDate ? new Date(rowB.original.lastCommitDate).getTime() : 0
+          return dateB - dateA // Most recent first
         },
       },
       {
@@ -353,7 +512,7 @@ export default function IssuesTable({ issues, onAssignAgent, onViewIssue, agents
     },
     initialState: {
       pagination: {
-        pageSize: 20,
+        pageSize: 100, // Show more issues by default for manager view
       },
     },
   })
@@ -533,7 +692,7 @@ export default function IssuesTable({ issues, onAssignAgent, onViewIssue, agents
           onChange={(e) => table.setPageSize(Number(e.target.value))}
           className="text-sm border border-gray-300 rounded px-2 py-1 bg-white"
         >
-          {[10, 20, 30, 40, 50].map((pageSize) => (
+          {[50, 100, 200, 300, 500].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>

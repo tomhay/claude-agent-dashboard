@@ -1,0 +1,589 @@
+{% comment %}
+** Gallery **
+{% endcomment %}
+
+{% liquid
+  assign blocks = section.blocks
+  assign use_mobile_slider = false
+
+  if type == 'block'
+    assign loop = "1,2,3,4,5" | split: ','
+  else
+    assign loop = blocks
+  endif
+
+  if section.settings.mobile_layout == 'slider' and blocks.size > 1
+    assign use_mobile_slider = true
+  endif
+%}
+
+{%- capture section_css -%}
+  .gallery-item__overlay {
+    background-color: {{ section.settings.overlay_color | color_modify: 'alpha', 0.77 }};
+  }
+
+  .gallery-item__overlay .icon {
+    fill: {{ section.settings.link_color }};
+  }
+{%- endcapture -%}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+
+    {% if section.settings.width == 'wide' %}
+      width: 100%;
+    {% endif %}
+  }
+
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section_css,
+    id: section.id,
+  %}
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    is-width-{{ section.settings.width }}
+    {% if section.settings.show_gutter == false %}
+      has-no-side-gutter
+      has-background
+    {% else %}
+      has-gutter-enabled
+    {% endif %}
+    {% if loop.size > section.settings.images_per_row %}
+      has-multirow-blocks
+    {% endif %}
+    {% if section.settings.width == 'wide' and section.settings.show_gutter == false %}
+      equal-columns--outside-trim
+    {% endif %}
+  "
+  {% if section.settings.animation != "none" %}
+    data-scroll-class="{{ section.settings.animation }}"
+  {% endif %}
+>
+  {% if use_mobile_slider and section.settings.show_arrows %}
+    <div class="container">
+      <div class="one-whole column">
+        <div class="gallery__nav-wrapper">
+          {%
+            render 'icon',
+            name: 'left-arrow',
+            icon_class: 'gallery__nav gallery__nav--prev',
+          %}
+          {%
+            render 'icon',
+            name: 'right-arrow',
+            icon_class: 'gallery__nav gallery__nav--next',
+          %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div
+    class="
+      gallery__wrapper
+      gallery__wrapper--{{ section.settings.gallery_type }}
+      gallery__wrapper--page-dots-{{ section.settings.show_navigation_dots }}
+      {% if section.settings.gallery_type != 'vertical-masonry' %}container{% endif %}
+    "
+    data-gallery-wrapper
+  >
+    {% if blocks.size > 0 or loop.size > 0 %}
+      {% for item in loop %}
+        {% if type == 'block' %}
+          {% capture index %}{{ forloop.index }}{% endcapture %}
+        {% else %}
+          {% assign block = item %}
+        {% endif %}
+
+        {% comment %} Add number to id for each loop {% endcomment %}
+        {% capture image_index %}image{{ index }}{% endcapture %}
+        {% capture mobile_image_index %}mobile_image{{ index }}{% endcapture %}
+        {% capture link %}link{{ index }}{% endcapture %}
+        {% capture hide %}hide{{ index }}{% endcapture %}
+
+        {% liquid
+          assign image = block.settings[image_index]
+          assign mobile_image = block.settings[mobile_image_index] | default: image
+        %}
+
+        {% if block.settings[hide] == false or type != "block" %}
+          <div
+            class="
+              gallery__item
+              {% if section.settings.show_gutter %}
+                has-gutter
+              {% endif %}
+              {% if section.settings.gallery_type == 'classic' or section.settings.gallery_type == 'vertical-masonry' %}
+                {% render 'column-width', value: section.settings.images_per_row %}
+                {% if use_mobile_slider %}
+                  medium-down--one-whole
+                {% else %}
+                  medium-down--one-half
+                  small-down--one-whole
+                {% endif %}
+              {% elsif section.settings.gallery_type == 'horizontal-masonry' and use_mobile_slider %}
+                medium-down--one-whole
+              {% endif %}
+              column
+              {% if section.settings.gallery_type == 'classic' and section.settings.crop_images == true %}
+                has-image-crop image-crop--center
+              {% endif %}
+              has-image-crop--mobile-{{ section.settings.crop_images_mobile }}
+            "
+            {% if type != 'block' %}
+              {{ block.shopify_attributes }}
+            {% endif %}
+            data-gallery-item
+          >
+            <div class="gallery__item-wrap is-relative">
+              {% if section.settings.gallery_type == 'horizontal-masonry' %}
+                {% if image != blank %}
+                  {%
+                    render 'image-element',
+                    image: image,
+                    additional_wrapper_classes: 'is-hidden-mobile-only',
+                    alt: image.alt,
+                    back_to_basics: true,
+                    focal_point: image.presentation.focal_point,
+                  %}
+                {% else %}
+                  {{- 'image' | placeholder_svg_tag: 'placeholder-svg is-hidden-mobile-only' -}}
+                {% endif %}
+
+                {% if mobile_image != blank %}
+                  {%
+                    render 'image-element',
+                    image: mobile_image,
+                    additional_wrapper_classes: 'is-hidden-desktop-only',
+                    alt: mobile_image.alt,
+                    back_to_basics: true,
+                    focal_point: mobile_image.presentation.focal_point,
+                  %}
+                {% else %}
+                  {{- 'image' | placeholder_svg_tag: 'placeholder-svg is-hidden-desktop-only' -}}
+                {% endif %}
+              {% elsif section.settings.gallery_type == 'vertical-masonry' %}
+                {% if image != blank %}
+                  {%
+                    render 'image-element',
+                    image: image,
+                    additional_wrapper_classes: 'is-hidden-mobile-only',
+                    alt: image.alt,
+                    focal_point: image.presentation.focal_point,
+                  %}
+                {% else %}
+                  {{- 'image' | placeholder_svg_tag: 'placeholder-svg is-hidden-mobile-only' -}}
+                {% endif %}
+
+                {% if mobile_image != blank %}
+                  {%
+                    render 'image-element',
+                    image: mobile_image,
+                    additional_wrapper_classes: 'is-hidden-desktop-only',
+                    alt: mobile_image.alt,
+                    focal_point: mobile_image.presentation.focal_point,
+                  %}
+                {% else %}
+                  {{- 'image' | placeholder_svg_tag: 'placeholder-svg is-hidden-desktop-only' -}}
+                {% endif %}
+              {% else %}
+                {% if image != blank %}
+                  {%
+                    render 'image-element',
+                    image: image,
+                    additional_wrapper_classes: 'is-hidden-mobile-only',
+                    alt: image.alt,
+                    stretch_width: section.settings.crop_images,
+                    focal_point: image.presentation.focal_point,
+                  %}
+                {% else %}
+                  {{- 'image' | placeholder_svg_tag: 'placeholder-svg is-hidden-mobile-only' -}}
+                {% endif %}
+
+                {% if mobile_image != blank %}
+                  {%
+                    render 'image-element',
+                    image: mobile_image,
+                    additional_wrapper_classes: 'is-hidden-desktop-only',
+                    alt: mobile_image.alt,
+                    stretch_width: section.settings.crop_images,
+                    focal_point: mobile_image.presentation.focal_point,
+                  %}
+                {% else %}
+                  {{- 'image' | placeholder_svg_tag: 'placeholder-svg is-hidden-desktop-only' -}}
+                {% endif %}
+              {% endif %}
+
+              {% if section.settings.enable_lightbox or block.settings[link] != blank %}
+                <div
+                  class="
+                    gallery-item__overlay
+                    is-flex
+                    is-align-center
+                    is-justify-center
+                  "
+                >
+                  {% if section.settings.enable_lightbox %}
+                    <a
+                      class="
+                        gallery__link
+                        is-hidden-mobile-only
+                      "
+                      {% if image != blank %}
+                        href="{{ image | img_url: '2000x' }}"
+                        data-fancybox="{{ section.id }}"
+                      {% endif %}
+                    >
+                      {%
+                        render 'icon',
+                        name: 'zoom',
+                      %}
+                    </a>
+
+                    <a
+                      class="
+                        gallery__link
+                        is-hidden-desktop-only
+                      "
+                      {% if mobile_image != blank %}
+                        href="{{ mobile_image | img_url: '2000x' }}"
+                        data-fancybox="{{ section.id }}"
+                      {% endif %}
+                    >
+                      {%
+                        render 'icon',
+                        name: 'zoom',
+                      %}
+                    </a>
+                  {% endif %}
+
+                  {% if block.settings[link] != blank %}
+                    <a class="gallery__link" href="{{ block.settings[link] }}">
+                      {%
+                        render 'icon',
+                        name: 'link',
+                      %}
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-data
+>
+  {
+    "use_mobile_slider": {{ use_mobile_slider | json }},
+    "show_navigation_dots": {{ section.settings.show_navigation_dots }},
+    "gallery_type": {{ section.settings.gallery_type | json }},
+    "show_gutter": {{ section.settings.show_gutter }},
+    "crop_images_mobile": {{ section.settings.crop_images_mobile }}
+  }
+</script>
+<script data-theme-editor-load-script src="{{ 'z__jsGallery.js' | asset_url }}"></script>
+
+{% schema %}
+  {
+    "name": "Gallery",
+    "class": "gallery jsGallery",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "select",
+        "id": "gallery_type",
+        "label": "Gallery style",
+        "options": [
+          {
+            "value": "classic",
+            "label": "Classic"
+          },
+          {
+            "value": "horizontal-masonry",
+            "label": "Horizontal masonry"
+          },
+          {
+            "value": "vertical-masonry",
+            "label": "Vertical masonry"
+          }
+        ],
+        "default": "classic"
+      },
+      {
+        "type": "range",
+        "id": "images_per_row",
+        "label": "Images per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 4,
+        "info": "Only applies to classic and vertical masonry gallery styles."
+      },
+      {
+        "type": "checkbox",
+        "id": "crop_images",
+        "label": "Crop images",
+        "default": false,
+        "info": "Only applies to classic gallery style."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_lightbox",
+        "label": "Enable lightbox",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "overlay_color",
+        "label": "Overlay",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Icons",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "standard",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "wide",
+            "label": "Wide"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_gutter",
+        "label": "Show gutter",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "animation",
+        "label": "Animation",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "fadeIn",
+            "label": "Fade in"
+          },
+          {
+            "value": "fadeInDown",
+            "label": "Fade in down"
+          },
+          {
+            "value": "fadeInLeft",
+            "label": "Fade in left"
+          },
+          {
+            "value": "fadeInRight",
+            "label": "Fade in right"
+          },
+          {
+            "value": "slideInLeft",
+            "label": "Slide in left"
+          },
+          {
+            "value": "slideInRight",
+            "label": "Slide in right"
+          },
+          {
+            "value": "zoomIn",
+            "label": "Zoom in"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "radio",
+        "id": "mobile_layout",
+        "label": "Mobile layout",
+        "default": "grid",
+        "options": [
+          {
+            "value": "slider",
+            "label": "Slider"
+          },
+          {
+            "value": "stacked",
+            "label": "Stacked"
+          }
+        ],
+        "default": "stacked"
+      },
+      {
+        "type": "checkbox",
+        "id": "crop_images_mobile",
+        "label": "Crop images on mobile",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_arrows",
+        "label": "Show arrows on mobile",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_navigation_dots",
+        "label": "Show navigation dots on mobile",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced"
+      },
+      {
+        "type": "paragraph",
+        "content": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "800 x 800px recommended"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile image",
+            "info": "Optional. Desktop image will show on mobile by default."
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Gallery",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ],
+    "disabled_on": {
+      "groups": [
+        "*"
+      ]
+    }
+  }
+{% endschema %}

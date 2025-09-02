@@ -1,0 +1,62 @@
+{% comment %}
+** Collapsible Row **
+Required
+- block {object}
+{% endcomment %}
+
+{% capture icon_set %}
+  {% if settings.toggle_icon_style == 'carets' %}
+    {%
+      render 'icon',
+      name: 'down-caret',
+      icon_class: 'caret',
+    %}
+  {% else %}
+    {%
+      render 'icon',
+      name: 'plus',
+      icon_class: 'plus'
+    %}
+  {% endif %}
+{% endcapture %}
+
+<div
+  data-collapsible-row
+  class="
+    page-faq__column-wrap
+  "
+>
+  <div
+    class="
+      faq
+      faq__column-1
+    "
+  >
+    <dl
+      class="
+        faq-accordion
+        accordion-icon--{{ settings.toggle_icon_style }}
+      "
+    >
+      <dt>
+        <button
+          class="
+            accordion-style--{{ settings.toggle_icon_style }}
+            accordion__button
+          "
+          type="button"
+          aria-controls="panel-{{ block.id }}"
+          aria-expanded="true"
+        >
+          {{ icon_set }}
+          {{ block.settings.question }}
+        </button>
+      </dt>
+      <dd id="panel-{{ block.id }}" aria-hidden="false">
+        <div class="content">
+          {{- block.settings.answer -}}
+        </div>
+      </dd>
+    </dl>
+  </div>
+</div>

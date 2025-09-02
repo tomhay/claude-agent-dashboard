@@ -1,0 +1,174 @@
+{% comment %}
+  @param product {Object}
+    The product object
+
+  @param context {String}
+    The snippet context
+
+  @param collection_handles {String}
+    The associated collection handle
+{% endcomment %}
+
+{% comment %} Check if product is on sale {% endcomment %}
+{% liquid
+  if product.compare_at_price > product.price
+    assign product_on_sale = true
+  endif
+%}
+
+{% comment %} Check if sticker holder should be displayed {% endcomment %}
+{% if
+  collection_handles contains 'best-seller' or
+  collection_handles contains 'coming-soon' or
+  collection_handles contains 'new' or
+  collection_handles contains 'pre-order' or
+  collection_handles contains 'staff-pick' or
+  product_on_sale or
+  product.available == false
+%}
+  <div
+    class="
+      sticker-holder
+      sticker-shape-{{ settings.sticker_shape }}
+      sticker-position-{{ settings.sticker_position }}
+    "
+  >
+    <div
+      class="
+        sticker-holder__content
+        sticker-holder__content--{{ context }}
+      "
+    >
+      {% if collection_handles contains 'best-seller' %}
+        <div
+          class="
+            thumbnail-sticker
+            thumbnail-sticker--best-seller
+          "
+        >
+          <span class="thumbnail-sticker__text">
+            {{- 'collections.general.best_seller' | t -}}
+          </span>
+        </div>
+      {% endif %}
+
+      {% if collection_handles contains 'coming-soon' %}
+        <div
+          class="
+            thumbnail-sticker
+            thumbnail-sticker--coming-soon
+          "
+        >
+          <span class="thumbnail-sticker__text">
+            {{- 'collections.general.coming_soon' | t -}}
+          </span>
+        </div>
+      {% endif %}
+
+      {% if collection_handles contains 'new' %}
+        <div
+          class="
+            thumbnail-sticker
+            thumbnail-sticker--new
+          "
+        >
+          <span class="thumbnail-sticker__text">
+            {{- 'collections.general.new' | t -}}
+          </span>
+        </div>
+      {% endif %}
+
+      {% if collection_handles contains 'pre-order' %}
+        <div
+          class="
+            thumbnail-sticker
+            thumbnail-sticker--pre-order
+          "
+        >
+          <span class="thumbnail-sticker__text">
+            {{- 'collections.general.pre_order' | t -}}
+          </span>
+        </div>
+      {% endif %}
+
+      {% if collection_handles contains 'staff-pick' %}
+        <div
+          class="
+            thumbnail-sticker
+            thumbnail-sticker--staff-pick
+          "
+        >
+          <span class="thumbnail-sticker__text">
+            {{- 'collections.general.staff_pick' | t -}}
+          </span>
+        </div>
+      {% endif %}
+
+      {% if context == 'thumbnail' %}
+        {% if product.available and product_on_sale %}
+          <div
+            class="
+              thumbnail-sticker
+              thumbnail-sticker--sale
+            "
+          >
+            <span class="thumbnail-sticker__text">
+              {{ 'collections.general.sale' | t }}
+            </span>
+          </div>
+        {% endif %}
+
+        {% unless product.available %}
+          <div
+            class="
+              thumbnail-sticker
+              thumbnail-sticker--sold-out
+            "
+          >
+            <span class="thumbnail-sticker__text">
+              {{ 'collections.general.sold_out' | t }}
+            </span>
+          </div>
+        {% endunless %}
+      {% else %}
+        <div
+          class="
+            thumbnail-sticker
+            thumbnail-sticker--hidden
+          "
+        >
+          {% comment %}Inject @pixelunion/shopify-price-ui/price-ui-badge begin{% endcomment %}
+          {%- assign locale_badge_sold_out = 'product.badge.sold_out' | t -%}
+          {%- assign locale_badge_on_sale = 'product.badge.sale' | t -%}
+          
+          <div class="price-ui-badge price-ui-badge--loading" data-price-ui-badge>
+            <noscript>
+              <style>
+                .price-ui-badge--loading {
+                  display: block !important;
+                  opacity: 1 !important;
+                }
+              </style>
+            </noscript>
+          
+            {% if product.available == false %}
+              {%-
+                render 'price-ui-templates',
+                template: 'price-ui-badge',
+                badge: locale_badge_sold_out,
+              -%}
+            {%- elsif product.compare_at_price > product.price -%}
+              {%-
+                render 'price-ui-templates',
+                template: 'price-ui-badge',
+                badge: locale_badge_on_sale,
+              -%}
+            {%- endif -%}
+          </div>
+          {% comment %}Inject @pixelunion/shopify-price-ui/price-ui-badge end{% endcomment %}
+
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

@@ -1,3 +1,6 @@
 {
-  "/page": "app/page.js"
+  "/api/issue-tracking/route": "app/api/issue-tracking/route.js",
+  "/api/check-running-agents/route": "app/api/check-running-agents/route.js",
+  "/page": "app/page.js",
+  "/api/get-git-info/route": "app/api/get-git-info/route.js"
 }

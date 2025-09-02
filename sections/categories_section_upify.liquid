@@ -1,0 +1,65 @@
+<div class="top-cat topCatMob animated fadeInDown" style="display:none;">
+  {% assign top_menu = linklists['top-categories'] %}
+  <ul>
+    {% if section.settings.cat_heading != blank %}
+      <li class="firstCat">
+        <p>{{ section.settings.cat_heading }}</p>
+      </li>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      <li>
+        <img class="catImg" src="{{ block.settings.mobile_grid_image | img_url: '100x100' }}" onclick='window.location.href="{{ block.settings.category_link }}"' style="display:none;">
+        <a href="{{ block.settings.category_link }}" class="top-cat-link">
+            {{ block.settings.category_name }}
+        </a>
+      </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Categories Section",
+	"max_blocks": 10,
+    "settings": [
+     {
+      "type": "text",
+      "id": "cat_heading",
+      "label": "Heading"
+     }
+    ],
+	"blocks": [
+     {
+       "type": "image",
+       "name": "Category",
+       "settings": [
+         {
+          "type": "image_picker",
+          "id": "mobile_grid_image",
+          "label": "Mobile Grid Image",
+          "info": "400px x 400px recommended"
+         },
+		 {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name"
+         },
+         {
+          "type": "url",
+          "id": "category_link",
+          "label": "Category Link"
+         }
+       ]
+     }
+	],
+    "presets": [
+	 {
+      "name": "Categories Section",
+      "category": "image",
+      "settings": { }
+     }
+	]
+  }
+{% endschema %}

@@ -1,0 +1,356 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "disabled": true,
+      "settings": {
+        "homepage_only": false,
+        "enable_sticky": true,
+        "show_close_icon": false,
+        "icon_label": "sun",
+        "text": "<p><em>Happy New Year! We are a registered NDIS Provider</em></p>",
+        "mobile_text": "",
+        "alignment": "center",
+        "size": "regular",
+        "button_label": "Shop now",
+        "link": "shopify://collections/connetix",
+        "button_style": "button--link-style",
+        "background": "#8c50a4",
+        "text_color": "#ffffff",
+        "width": "wide",
+        "css_class": "announcement-link",
+        "custom_css": ".announcement-link a {\ncolor: #FFF;\nborder-bottom: 1px solid #FFF;\n}"
+      }
+    },
+    "header": {
+      "type": "header-classic",
+      "settings": {
+        "logo": "shopify://shop_images/my-diffability-australia-logo.png",
+        "logo_width": 300,
+        "main_linklist": "menu-new",
+        "menu_alignment": "center",
+        "dropdown_click": false,
+        "display_search": true,
+        "icon_style": "icons",
+        "enable_overlay": false,
+        "show_text_shadow": false,
+        "overlay_link_color": "rgba(0,0,0,0)",
+        "overlay_link_hover_color": "rgba(0,0,0,0)",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 0,
+        "overlay_logo_width": 130,
+        "enable_sticky": true,
+        "sticky_background_opacity": 100,
+        "scroll_logo_width": 300,
+        "width": "wide",
+        "vertical_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "header_top-bar": {
+      "type": "header__top-bar",
+      "blocks": {
+        "header__top-bar-0": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "123 Main Street, Pleasantville USA"
+          }
+        },
+        "header__top-bar-1": {
+          "type": "social_media",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "header__top-bar-0",
+        "header__top-bar-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "background": "rgba(0,0,0,0)",
+        "link_color": "rgba(0,0,0,0)",
+        "link_hover_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "font": "open_sans_n4",
+        "font_style": "none",
+        "font_size": 14,
+        "letter_spacing": 0,
+        "show_locale_selector": true,
+        "show_currency_selector": false,
+        "width": "standard",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_1": {
+      "type": "mega-menu",
+      "blocks": {
+        "1559582793214": {
+          "type": "mixed",
+          "settings": {
+            "richtext_top": "",
+            "image_link_top": "",
+            "image_caption_top": "",
+            "menu_1": "sensory",
+            "menu_1_link": "shopify://collections/sensory-resources",
+            "menu_2": "",
+            "menu_2_link": "",
+            "menu_3": "",
+            "menu_3_link": "",
+            "menu_4": "",
+            "menu_4_link": "",
+            "image_link_bottom": "",
+            "richtext_bottom": ""
+          }
+        }
+      },
+      "block_order": [
+        "1559582793214"
+      ],
+      "settings": {
+        "parent_link": "sensory",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#000000",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "Add your deal, information or promotional text",
+        "mega_bottom_bar_link": "shopify://collections/sensory-resources",
+        "size": "regular",
+        "bottom_banner_bg": "#fdcf00",
+        "bottom_banner_text": "#000000",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_2": {
+      "type": "mega-menu",
+      "blocks": {
+        "mega-menu-2-2": {
+          "type": "mixed",
+          "settings": {
+            "richtext_top": "",
+            "image_link_top": "",
+            "image_caption_top": "",
+            "menu_1": "sensory",
+            "menu_1_link": "shopify://collections/sensory-resources",
+            "menu_2": "",
+            "menu_2_link": "",
+            "menu_3": "",
+            "menu_3_link": "",
+            "menu_4": "",
+            "menu_4_link": "",
+            "image_link_bottom": "",
+            "richtext_bottom": ""
+          }
+        },
+        "1559246020796": {
+          "type": "mixed",
+          "settings": {
+            "richtext_top": "",
+            "image_link_top": "",
+            "image_caption_top": "",
+            "menu_1": "social",
+            "menu_1_link": "shopify://collections/communication-1",
+            "menu_2": "",
+            "menu_2_link": "",
+            "menu_3": "",
+            "menu_3_link": "",
+            "menu_4": "",
+            "menu_4_link": "",
+            "image_link_bottom": "shopify://collections",
+            "richtext_bottom": ""
+          }
+        },
+        "c6f411c5-ba89-4418-864a-6f55a100a778": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "motor-skills-resources",
+            "menu_1_link": "shopify://collections/motor-skills-resources"
+          }
+        },
+        "7ca19f2e-37aa-4ae3-a94a-e79b9207f98a": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "books",
+            "menu_1_link": "shopify://collections/books"
+          }
+        },
+        "91a7e63d-e432-47d2-9da2-78c242c827ae": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sensory-fidgets-for-teens-and-adults_769618b3-60c1-41dc-b6f5-169c2063ecc4.jpg",
+            "image_link": "https://www.mydiffability.com.au/collections/teens-and-adults",
+            "image_caption": "<p>Shop for Teens &amp; Adults</p>"
+          }
+        }
+      },
+      "block_order": [
+        "mega-menu-2-2",
+        "1559246020796",
+        "c6f411c5-ba89-4418-864a-6f55a100a778",
+        "7ca19f2e-37aa-4ae3-a94a-e79b9207f98a",
+        "91a7e63d-e432-47d2-9da2-78c242c827ae"
+      ],
+      "settings": {
+        "parent_link": "shop",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#506dd0",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "checkmark",
+        "mega_bottom_bar_text": "We are a registered NDIS provider.",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#506dd0",
+        "bottom_banner_text": "#ffffff",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_3": {
+      "type": "mega-menu",
+      "blocks": {
+        "mega-menu-3-0": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "social",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "mega-menu-3-0"
+      ],
+      "settings": {
+        "parent_link": "social",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#000000",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "Add your deal, information or promotional text",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_4": {
+      "type": "mega-menu",
+      "blocks": {
+        "mega-menu-4-0": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "motor-skills-resources",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "mega-menu-4-0"
+      ],
+      "settings": {
+        "parent_link": "motor skills",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#000000",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "Add your deal, information or promotional text",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_5": {
+      "type": "mega-menu",
+      "blocks": {
+        "mega-menu-5-0": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "books",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "mega-menu-5-0"
+      ],
+      "settings": {
+        "parent_link": "books",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#000000",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "Add your deal, information or promotional text",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_6": {
+      "type": "mega-menu",
+      "blocks": {
+        "mega-menu-6-0": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "gifts",
+            "menu_1_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "mega-menu-6-0"
+      ],
+      "settings": {
+        "parent_link": "Gifts",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "#404040",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "Add your deal, information or promotional text",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "announcement_bar",
+    "header",
+    "header_top-bar",
+    "mega_menu_1",
+    "mega_menu_2",
+    "mega_menu_3",
+    "mega_menu_4",
+    "mega_menu_5",
+    "mega_menu_6"
+  ]
+}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Play, Clock, Terminal, Eye, GitBranch, ExternalLink, User, Tag } from 'lucide-react'
 import IssuesTable from './components/IssuesTable'
+import ProjectGanttChart from './components/ProjectGanttChart'
 
 interface Agent {
   id: string
@@ -170,10 +171,18 @@ export default function Dashboard() {
   const [runningTerminals, setRunningTerminals] = useState<RunningTerminal[]>([])
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null)
   const [gitInfo, setGitInfo] = useState<GitInfo[]>([])
-  const [activeTab, setActiveTab] = useState<'agents' | 'issues'>('agents')
+  const [activeTab, setActiveTab] = useState<'agents' | 'issues' | 'analytics' | 'performance' | 'projects'>('agents')
   const [issues, setIssues] = useState<GitHubIssue[]>([])
   const [selectedIssue, setSelectedIssue] = useState<GitHubIssue | null>(null)
   const [issuesLoading, setIssuesLoading] = useState(false)
+  const [analyticsData, setAnalyticsData] = useState<any>(null)
+  const [analyticsLoading, setAnalyticsLoading] = useState(false)
+  const [performanceData, setPerformanceData] = useState<any>(null)
+  const [performanceLoading, setPerformanceLoading] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<string>('AIBL')
+  const [projectData, setProjectData] = useState<any>(null)
+  const [projectLoading, setProjectLoading] = useState(false)
+  const [activeAgents, setActiveAgents] = useState<Set<string>>(new Set())
 
   // Load git information on component mount
   useEffect(() => {
@@ -215,6 +224,120 @@ export default function Dashboard() {
       loadIssues()
     }
   }, [activeTab])
+
+  // Load analytics when switching to analytics tab
+  const loadAnalytics = async () => {
+    setAnalyticsLoading(true)
+    try {
+      const response = await fetch('/api/issue-tracking')
+      if (response.ok) {
+        const data = await response.json()
+        setAnalyticsData(data)
+      }
+    } catch (error) {
+      console.error('Failed to load analytics:', error)
+    } finally {
+      setAnalyticsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (activeTab === 'analytics') {
+      loadAnalytics()
+    }
+  }, [activeTab])
+
+  // Load performance data when switching to performance tab
+  const loadPerformance = async () => {
+    setPerformanceLoading(true)
+    try {
+      const response = await fetch('/api/developer-performance?weeks=4')
+      if (response.ok) {
+        const data = await response.json()
+        setPerformanceData(data)
+      }
+    } catch (error) {
+      console.error('Failed to load performance data:', error)
+    } finally {
+      setPerformanceLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (activeTab === 'performance') {
+      loadPerformance()
+    }
+  }, [activeTab])
+
+  // Load project data when switching to projects tab or changing project
+  const loadProject = async (project?: string) => {
+    const targetProject = project || selectedProject
+    setProjectLoading(true)
+    try {
+      const response = await fetch(`/api/issue-tracking?project=${targetProject}`)
+      if (response.ok) {
+        const data = await response.json()
+        setProjectData(data)
+      }
+    } catch (error) {
+      console.error('Failed to load project data:', error)
+    } finally {
+      setProjectLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (activeTab === 'projects') {
+      loadProject()
+    }
+  }, [activeTab, selectedProject])
+
+  // Auto-refresh project data when agents are active
+  useEffect(() => {
+    if (activeTab === 'projects' && activeAgents.size > 0) {
+      const interval = setInterval(async () => {
+        console.log('Auto-refreshing project data due to active agents')
+        loadProject()
+        
+        // Check if agents are still running by looking at terminals
+        try {
+          const response = await fetch('/api/check-running-agents')
+          if (response.ok) {
+            const data = await response.json()
+            const runningTerminals = data.runningAgents || []
+            
+            // Remove agents that are no longer running
+            setActiveAgents(prev => {
+              const newActiveAgents = new Set(prev)
+              prev.forEach(agentId => {
+                const agentNames = {
+                  'aibl-issue-cleanup': 'Issue Cleanup Agent',
+                  'aibl-test-fixer': 'Test Failure Agent', 
+                  'aibl-milestone-prep': 'Milestone Prep Agent',
+                  'bl2-bug-fixer': 'Bug Fix Agent',
+                  'bl2-milestone-prep': 'BL2 Milestone Agent'
+                }
+                const expectedName = agentNames[agentId as keyof typeof agentNames]
+                const stillRunning = runningTerminals.some((terminal: any) => 
+                  terminal.agentName?.includes(expectedName) || 
+                  terminal.windowTitle?.includes(expectedName)
+                )
+                if (!stillRunning) {
+                  newActiveAgents.delete(agentId)
+                  console.log(`Agent ${agentId} completed - removed from active list`)
+                }
+              })
+              return newActiveAgents
+            })
+          }
+        } catch (error) {
+          console.error('Failed to check running agents:', error)
+        }
+      }, 15000) // Refresh every 15 seconds when agents are working
+      
+      return () => clearInterval(interval)
+    }
+  }, [activeTab, activeAgents.size, selectedProject])
 
   const showPrompt = (agent: Agent) => {
     setSelectedAgent(agent)
@@ -364,6 +487,36 @@ export default function Dashboard() {
           }`}
         >
           Universal Issues {issues.length > 0 && `(${issues.length})`}
+        </button>
+        <button
+          onClick={() => setActiveTab('analytics')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            activeTab === 'analytics'
+              ? 'bg-white text-slate-900 shadow-sm'
+              : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          Manager Analytics
+        </button>
+        <button
+          onClick={() => setActiveTab('performance')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            activeTab === 'performance'
+              ? 'bg-white text-slate-900 shadow-sm'
+              : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          Developer Performance
+        </button>
+        <button
+          onClick={() => setActiveTab('projects')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            activeTab === 'projects'
+              ? 'bg-white text-slate-900 shadow-sm'
+              : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          🎯 Projects
         </button>
       </div>
 
@@ -555,6 +708,643 @@ export default function Dashboard() {
               <div className="text-sm text-slate-500">
                 Make sure your GitHub token is configured and repositories are accessible
               </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Analytics Tab */}
+      {activeTab === 'analytics' && (
+        <div className="space-y-6">
+          {/* Analytics Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="text-lg font-medium text-slate-900">Manager Analytics</h2>
+              {analyticsLoading && <div className="w-4 h-4 border border-slate-300 border-t-slate-600 rounded-full animate-spin" />}
+            </div>
+            <button
+              onClick={() => loadAnalytics()}
+              className="px-3 py-1 text-sm bg-slate-100 hover:bg-slate-200 rounded transition-colors"
+            >
+              Refresh Data
+            </button>
+          </div>
+
+          {analyticsData ? (
+            <>
+              {/* Daily Manager Alerts */}
+              <div className="bg-slate-50 rounded-lg p-4">
+                <h3 className="font-medium text-slate-900 mb-3">🚨 Daily Alerts - {analyticsData.managerAlerts.date}</h3>
+                
+                {/* Critical Alerts */}
+                {analyticsData.managerAlerts.critical.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="text-sm font-medium text-red-700 mb-2">Critical Issues</h4>
+                    <div className="space-y-1">
+                      {analyticsData.managerAlerts.critical.map((alert: string, index: number) => (
+                        <div key={index} className="text-sm text-red-600 bg-red-50 p-2 rounded">
+                          {alert}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Attention Alerts */}
+                {analyticsData.managerAlerts.attention.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="text-sm font-medium text-yellow-700 mb-2">Needs Attention</h4>
+                    <div className="space-y-1">
+                      {analyticsData.managerAlerts.attention.map((alert: string, index: number) => (
+                        <div key={index} className="text-sm text-yellow-600 bg-yellow-50 p-2 rounded">
+                          {alert}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Positive Alerts */}
+                {analyticsData.managerAlerts.positive.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="text-sm font-medium text-green-700 mb-2">Good News</h4>
+                    <div className="space-y-1">
+                      {analyticsData.managerAlerts.positive.map((alert: string, index: number) => (
+                        <div key={index} className="text-sm text-green-600 bg-green-50 p-2 rounded">
+                          {alert}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="text-xs text-slate-500 mt-3">
+                  {analyticsData.managerAlerts.summary}
+                </div>
+              </div>
+
+              {/* Project Summary */}
+              <div className="grid grid-cols-4 gap-4">
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-slate-900">{analyticsData.summary.totalIssues}</div>
+                  <div className="text-sm text-slate-600">Total Issues</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-green-600">{analyticsData.summary.onTrack}</div>
+                  <div className="text-sm text-slate-600">On Track</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-yellow-600">{analyticsData.summary.atRisk}</div>
+                  <div className="text-sm text-slate-600">At Risk</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-red-600">{analyticsData.summary.overdue}</div>
+                  <div className="text-sm text-slate-600">Overdue</div>
+                </div>
+              </div>
+
+              {/* Issue Tracking Details */}
+              <div className="bg-white border rounded-lg">
+                <div className="p-4 border-b">
+                  <h3 className="font-medium text-slate-900">Issue Reality Tracking</h3>
+                  <div className="text-sm text-slate-600">Agent estimates vs actual progress</div>
+                </div>
+                <div className="divide-y">
+                  {analyticsData.issueTracking.slice(0, 10).map((item: any) => (
+                    <div key={item.issue.number} className="p-4">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-sm font-medium">#{item.issue.number}</span>
+                            <span className={`px-2 py-1 rounded text-xs ${
+                              item.tracking.status === 'on-track' ? 'bg-green-100 text-green-700' :
+                              item.tracking.status === 'at-risk' ? 'bg-yellow-100 text-yellow-700' :
+                              'bg-red-100 text-red-700'
+                            }`}>
+                              {item.tracking.status}
+                            </span>
+                            <span className="text-xs text-slate-500">{item.project}</span>
+                          </div>
+                          <div className="text-sm text-slate-900 mb-2">{item.issue.title}</div>
+                          
+                          <div className="grid grid-cols-2 gap-4 text-xs">
+                            <div>
+                              <div className="text-slate-600">Agent Estimate:</div>
+                              <div className="font-medium">{item.agentEstimate.estimatedHours}h ({item.agentEstimate.complexity})</div>
+                            </div>
+                            <div>
+                              <div className="text-slate-600">Reality:</div>
+                              <div className="font-medium">
+                                {item.reality.hasStarted ? 
+                                  `${item.reality.daysWorked} days, ${item.commits.length} commits` : 
+                                  'Not started'
+                                }
+                              </div>
+                            </div>
+                          </div>
+
+                          {item.tracking.coachingInsights.length > 0 && (
+                            <div className="mt-2">
+                              <div className="text-xs text-slate-600 mb-1">Coaching Insights:</div>
+                              <div className="text-xs text-slate-700">
+                                {item.tracking.coachingInsights.join(' • ')}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        
+                        <div className="text-right ml-4">
+                          <div className="text-xs text-slate-600">Predicted Completion:</div>
+                          <div className="text-sm font-medium">
+                            {new Date(item.tracking.completionPrediction.predictedDate).toLocaleDateString()}
+                          </div>
+                          <div className="text-xs text-slate-500">
+                            {Math.round(item.tracking.completionPrediction.confidence * 100)}% confidence
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-12">
+              <div className="text-slate-400 mb-2">No analytics data loaded</div>
+              <button
+                onClick={() => loadAnalytics()}
+                className="text-sm bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                Load Analytics
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Developer Performance Tab */}
+      {activeTab === 'performance' && (
+        <div className="space-y-6">
+          {/* Performance Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="text-lg font-medium text-slate-900">Developer Performance</h2>
+              {performanceLoading && <div className="w-4 h-4 border border-slate-300 border-t-slate-600 rounded-full animate-spin" />}
+            </div>
+            <div className="flex gap-2">
+              <select className="text-sm border border-gray-300 rounded px-2 py-1 bg-white">
+                <option value="4">Last 4 weeks</option>
+                <option value="2">Last 2 weeks</option>
+                <option value="8">Last 8 weeks</option>
+              </select>
+              <button
+                onClick={() => loadPerformance()}
+                className="px-3 py-1 text-sm bg-slate-100 hover:bg-slate-200 rounded transition-colors"
+              >
+                Refresh
+              </button>
+            </div>
+          </div>
+
+          {performanceData ? (
+            <>
+              {/* Team Summary */}
+              <div className="grid grid-cols-4 gap-4">
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-slate-900">{performanceData.summary.activeDevelopers}</div>
+                  <div className="text-sm text-slate-600">Active Developers</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-blue-600">{performanceData.summary.avgVelocity}</div>
+                  <div className="text-sm text-slate-600">Avg Velocity</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-green-600">{performanceData.summary.avgQuality}</div>
+                  <div className="text-sm text-slate-600">Avg Quality</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-yellow-600">{performanceData.summary.needsAttention.length}</div>
+                  <div className="text-sm text-slate-600">Needs Attention</div>
+                </div>
+              </div>
+
+              {/* Developer Performance Table */}
+              <div className="bg-white border rounded-lg">
+                <div className="p-4 border-b">
+                  <h3 className="font-medium text-slate-900">Weekly Developer Performance</h3>
+                  <div className="text-sm text-slate-600">
+                    {performanceData.period.weeks} week analysis • {new Date(performanceData.period.startDate).toLocaleDateString()} - {new Date(performanceData.period.endDate).toLocaleDateString()}
+                  </div>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Developer</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Velocity</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quality</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Focus</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Efficiency</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Workflow</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Time</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Flags</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      {performanceData.developers.map((developer: any) => (
+                        <tr key={developer.name} className="hover:bg-gray-50">
+                          <td className="px-4 py-3">
+                            <div className="text-sm">
+                              <div className="font-medium text-gray-900">{developer.name}</div>
+                              <div className="text-gray-500">{developer.projects.join(', ')}</div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="text-sm">
+                              <div className="font-medium">{developer.weeklyStats.commitsPerDay} commits/day</div>
+                              <div className="text-gray-500">{developer.weeklyStats.totalCommits} commits total</div>
+                              <div className={`text-xs ${developer.weeklyStats.productivity.velocity >= 70 ? 'text-green-600' : developer.weeklyStats.productivity.velocity >= 40 ? 'text-yellow-600' : 'text-red-600'}`}>
+                                Velocity: {developer.weeklyStats.productivity.velocity}
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="text-sm">
+                              <div className="font-medium">{developer.weeklyStats.avgCommitSize} lines</div>
+                              <div className="text-gray-500">avg per commit</div>
+                              <div className={`text-xs ${developer.weeklyStats.productivity.quality >= 70 ? 'text-green-600' : developer.weeklyStats.productivity.quality >= 40 ? 'text-yellow-600' : 'text-red-600'}`}>
+                                Score: {developer.weeklyStats.productivity.quality}
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="text-sm">
+                              <div className="font-medium">{developer.weeklyStats.issuesWorked} issues</div>
+                              <div className="text-gray-500">worked on</div>
+                              <div className={`text-xs ${developer.weeklyStats.productivity.focus >= 70 ? 'text-green-600' : developer.weeklyStats.productivity.focus >= 40 ? 'text-yellow-600' : 'text-red-600'}`}>
+                                Score: {developer.weeklyStats.productivity.focus}
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="text-sm">
+                              <div className="font-medium">{developer.weeklyStats.productivity.efficiency}</div>
+                              <div className="text-gray-500">commits/hour ratio</div>
+                              <div className="text-gray-400 text-xs">
+                                {developer.weeklyStats.totalCommits} commits ÷ {developer.weeklyStats.estimatedHoursPerWeek}h
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="text-sm">
+                              <div className="font-medium">{developer.weeklyStats.issueWorkflowRatio}% tracked</div>
+                              <div className="text-gray-500">{developer.weeklyStats.trackedCommits}/{developer.weeklyStats.totalCommits} commits</div>
+                              {developer.weeklyStats.untrackedCommits > 0 && (
+                                <div className="text-red-600 text-xs">
+                                  {developer.weeklyStats.untrackedCommits} untracked
+                                </div>
+                              )}
+                              <div className={`text-xs ${developer.weeklyStats.productivity.workflowDiscipline >= 70 ? 'text-green-600' : developer.weeklyStats.productivity.workflowDiscipline >= 40 ? 'text-yellow-600' : 'text-red-600'}`}>
+                                Discipline: {developer.weeklyStats.productivity.workflowDiscipline}
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="text-sm">
+                              <div className="font-medium">{developer.weeklyStats.estimatedHoursPerWeek}h/week</div>
+                              <div className="text-gray-500">{developer.weeklyStats.hoursPerDay}h/day avg</div>
+                              <div className="text-gray-400">{developer.weeklyStats.activeDays} active days</div>
+                              <div className={`text-xs ${developer.weeklyStats.productivity.consistency >= 70 ? 'text-green-600' : developer.weeklyStats.productivity.consistency >= 40 ? 'text-yellow-600' : 'text-red-600'}`}>
+                                {developer.weeklyStats.productivity.consistency}% consistent
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="space-y-1">
+                              {developer.flags.slice(0, 2).map((flag: string, index: number) => (
+                                <div key={index} className="text-xs bg-red-50 text-red-600 px-2 py-1 rounded">
+                                  {flag}
+                                </div>
+                              ))}
+                              {developer.flags.length > 2 && (
+                                <div className="text-xs text-gray-500">+{developer.flags.length - 2} more</div>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Coaching Suggestions */}
+                {performanceData.developers.some((d: any) => d.coachingSuggestions.length > 0) && (
+                  <div className="p-4 border-t bg-blue-50">
+                    <h4 className="font-medium text-slate-900 mb-2">💡 Coaching Suggestions</h4>
+                    <div className="space-y-2">
+                      {performanceData.developers.map((developer: any) => (
+                        developer.coachingSuggestions.length > 0 && (
+                          <div key={developer.name} className="text-sm">
+                            <span className="font-medium">{developer.name}:</span>
+                            <ul className="ml-4 mt-1 space-y-1">
+                              {developer.coachingSuggestions.map((suggestion: string, index: number) => (
+                                <li key={index} className="text-slate-700">{suggestion}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-12">
+              <div className="text-slate-400 mb-2">No performance data loaded</div>
+              <button
+                onClick={() => loadPerformance()}
+                className="text-sm bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                Load Performance Data
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Projects Tab */}
+      {activeTab === 'projects' && (
+        <div className="space-y-6">
+          {/* Project Switcher */}
+          <div className="bg-slate-50 rounded-lg p-4">
+            <h3 className="font-medium text-slate-900 mb-3">Project Switcher</h3>
+            <div className="flex gap-2 flex-wrap">
+              {['AIBL', 'BL2', 'Blxero', 'PureZone', 'Upify', 'MyDiff', 'BaliLove'].map((project) => (
+                <button
+                  key={project}
+                  onClick={() => {
+                    setSelectedProject(project)
+                    loadProject(project)
+                  }}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    selectedProject === project
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white text-slate-700 hover:bg-slate-100 border'
+                  }`}
+                >
+                  {project === 'AIBL' ? '🔥 AIBL' : project}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Project Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <h2 className="text-2xl font-bold text-slate-900">{selectedProject} Project Timeline</h2>
+              {projectLoading && <div className="w-6 h-6 border border-slate-300 border-t-slate-600 rounded-full animate-spin" />}
+              {projectData && (
+                <div className="text-sm text-slate-600">
+                  {projectData.issueTracking.length} issues • {projectData.summary.overdue} overdue • Sep 7 milestone
+                </div>
+              )}
+            </div>
+            <div className="flex gap-2">
+              {/* Project-specific agent buttons */}
+              {selectedProject === 'AIBL' && (
+                <>
+                  <button
+                    onClick={async () => {
+                      console.log('Testing PowerShell Module approach...')
+                      const response = await fetch('/api/test-agent-powershell', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentCommand: 'AIBL Test Agent: Run gh issue list --repo BaliLove/chat-langchain --state open --limit 3 to test GitHub CLI',
+                          projectPath: 'C:\\Users\\User\\apps\\aibl',
+                          agentName: 'Test Agent PS',
+                          projectName: 'AIBL'
+                        })
+                      })
+                      const result = await response.json()
+                      console.log('PowerShell result:', result)
+                      alert(`PowerShell Test: ${result.success ? 'SUCCESS' : 'FAILED'}\nMethod: ${result.method}\n${result.message}`)
+                    }}
+                    className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center gap-1"
+                  >
+                    🔧 Test PS Module
+                  </button>
+                  <button
+                    onClick={async () => {
+                      console.log('Testing Direct CMD approach...')
+                      const response = await fetch('/api/test-agent-direct', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentCommand: 'AIBL Test Agent: Run gh issue list --repo BaliLove/chat-langchain --state open --limit 3 to test GitHub CLI',
+                          projectPath: 'C:\\Users\\User\\apps\\aibl',
+                          agentName: 'Test Agent Direct',
+                          projectName: 'AIBL'
+                        })
+                      })
+                      const result = await response.json()
+                      console.log('Direct result:', result)
+                      alert(`Direct Test: ${result.success ? 'SUCCESS' : 'FAILED'}\nMethod: ${result.method}\n${result.message}`)
+                    }}
+                    className="px-3 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600 transition-colors flex items-center gap-1"
+                  >
+                    ⚡ Test Direct
+                  </button>
+                  <button
+                    onClick={async () => {
+                      setActiveAgents(prev => new Set(prev).add('aibl-issue-cleanup'))
+                      await fetch('/api/run-agent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentId: 'aibl-issue-cleanup',
+                          projectPath: 'C:\\Users\\User\\apps\\aibl',
+                          agentName: 'Issue Cleanup Agent',
+                          projectName: 'AIBL'
+                        })
+                      })
+                      // Refresh project data after starting agent
+                      setTimeout(() => loadProject(), 2000)
+                    }}
+                    disabled={activeAgents.has('aibl-issue-cleanup')}
+                    className={`px-3 py-1 text-sm rounded transition-colors flex items-center gap-1 ${
+                      activeAgents.has('aibl-issue-cleanup')
+                        ? 'bg-red-300 text-red-800 cursor-not-allowed'
+                        : 'bg-red-500 text-white hover:bg-red-600'
+                    }`}
+                  >
+                    {activeAgents.has('aibl-issue-cleanup') ? (
+                      <>
+                        <div className="w-3 h-3 border border-red-800 border-t-transparent rounded-full animate-spin" />
+                        Cleaning...
+                      </>
+                    ) : (
+                      <>🧹 Clean Issues</>
+                    )}
+                  </button>
+                  <button
+                    onClick={async () => {
+                      await fetch('/api/run-agent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentId: 'aibl-test-fixer',
+                          projectPath: 'C:\\Users\\User\\apps\\aibl',
+                          agentName: 'Test Failure Agent',
+                          projectName: 'AIBL'
+                        })
+                      })
+                      setTimeout(() => loadProject(), 2000)
+                    }}
+                    className="px-3 py-1 text-sm bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors flex items-center gap-1"
+                  >
+                    🧪 Fix Tests
+                  </button>
+                  <button
+                    onClick={async () => {
+                      await fetch('/api/run-agent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentId: 'aibl-milestone-prep',
+                          projectPath: 'C:\\Users\\User\\apps\\aibl',
+                          agentName: 'Milestone Prep Agent',
+                          projectName: 'AIBL'
+                        })
+                      })
+                      setTimeout(() => loadProject(), 2000)
+                    }}
+                    className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center gap-1"
+                  >
+                    🎯 Milestone Prep
+                  </button>
+                </>
+              )}
+              
+              {selectedProject === 'BL2' && (
+                <>
+                  <button
+                    onClick={async () => {
+                      await fetch('/api/run-agent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentId: 'bl2-bug-fixer',
+                          projectPath: 'C:\\Users\\User\\apps\\bl2',
+                          agentName: 'Bug Fix Agent',
+                          projectName: 'BL2'
+                        })
+                      })
+                      setTimeout(() => loadProject(), 2000)
+                    }}
+                    className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors flex items-center gap-1"
+                  >
+                    🐛 Fix Critical Bugs
+                  </button>
+                  <button
+                    onClick={async () => {
+                      await fetch('/api/run-agent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          agentId: 'bl2-milestone-prep',
+                          projectPath: 'C:\\Users\\User\\apps\\bl2',
+                          agentName: 'BL2 Milestone Agent',
+                          projectName: 'BL2'
+                        })
+                      })
+                      setTimeout(() => loadProject(), 2000)
+                    }}
+                    className="px-3 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600 transition-colors flex items-center gap-1"
+                  >
+                    🚀 2nd Release Prep
+                  </button>
+                </>
+              )}
+              
+              <button
+                onClick={() => loadProject()}
+                className="px-3 py-1 text-sm bg-slate-100 hover:bg-slate-200 rounded transition-colors"
+              >
+                🔄 Refresh
+              </button>
+            </div>
+          </div>
+
+          {projectData ? (
+            <>
+              {/* Agent Progress Indicator */}
+              {activeAgents.size > 0 && (
+                <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-medium text-blue-900">🤖 Active Agents</h3>
+                    <span className="text-sm text-blue-700">{activeAgents.size} agent{activeAgents.size > 1 ? 's' : ''} working</span>
+                  </div>
+                  <div className="space-y-2">
+                    {Array.from(activeAgents).map(agentId => {
+                      const agentNames: Record<string, string> = {
+                        'aibl-issue-cleanup': 'Issue Cleanup Agent',
+                        'aibl-test-fixer': 'Test Failure Agent',
+                        'aibl-milestone-prep': 'Milestone Prep Agent',
+                        'bl2-bug-fixer': 'Bug Fix Agent',
+                        'bl2-milestone-prep': 'BL2 Milestone Agent'
+                      }
+                      return (
+                        <div key={agentId} className="flex items-center gap-2 text-sm text-blue-800">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+                          <span>{agentNames[agentId] || agentId} is working...</span>
+                          <div className="text-xs text-blue-600">Auto-refreshing data every 15s</div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  <div className="mt-3 text-xs text-blue-600">
+                    💡 Timeline will update in real-time as agent processes issues. Watch for status changes and issue count updates.
+                  </div>
+                </div>
+              )}
+
+              {/* Project Stats */}
+              <div className="grid grid-cols-4 gap-4">
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-slate-900">{projectData.issueTracking.length}</div>
+                  <div className="text-sm text-slate-600">Total Issues</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-red-600">{projectData.summary.overdue}</div>
+                  <div className="text-sm text-slate-600">Overdue</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-yellow-600">{projectData.summary.atRisk}</div>
+                  <div className="text-sm text-slate-600">At Risk</div>
+                </div>
+                <div className="bg-white border rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-green-600">{projectData.summary.onTrack}</div>
+                  <div className="text-sm text-slate-600">On Track</div>
+                </div>
+              </div>
+
+              {/* Project Gantt Chart */}
+              <ProjectGanttChart 
+                issues={projectData.issueTracking} 
+                projectName={selectedProject}
+              />
+            </>
+          ) : (
+            <div className="text-center py-12">
+              <div className="text-slate-400 mb-2">No project data loaded</div>
+              <button
+                onClick={() => loadProject()}
+                className="text-sm bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                Load Project Timeline
+              </button>
             </div>
           )}
         </div>

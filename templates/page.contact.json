@@ -1,0 +1,234 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": true,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_image_with_text_overlay_HJmWw7": {
+      "type": "index__image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/a-phone-on-a-blue-background-with-contact-us.jpg",
+        "link": "",
+        "pretext": "",
+        "title": "",
+        "subtitle": "",
+        "pretext_color": "#000000",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "text_alignment": "center",
+        "text_horizontal_position": "center",
+        "text_vertical_position": "middle",
+        "text_width": 40,
+        "background_color": "#FFFFFF",
+        "background_opacity": 77,
+        "border_color": "#FFFFFF",
+        "border_width": 0,
+        "button_1": "",
+        "button_1_link": "",
+        "button_1_style": "button--secondary",
+        "button_2": "",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 13,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": true,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "contact": {
+      "type": "index__contact-form",
+      "blocks": {
+        "0943eae7-73e7-413a-ab5b-fd6a3f2d77a0": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Use this field to display text of any kind, such as standard reply times for inquiries.</p>"
+          }
+        },
+        "819ccdac-5c74-43bc-b47b-4b11cc82382a": {
+          "type": "textfield",
+          "settings": {
+            "label": "Name",
+            "required": true
+          }
+        },
+        "a8554837-a77c-4c87-8398-15cb200375c5": {
+          "type": "email",
+          "settings": {
+            "label": "Email"
+          }
+        },
+        "433fc484-88c1-4ec8-8a8d-fc063586f91e": {
+          "type": "textarea",
+          "settings": {
+            "label": "Message",
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "0943eae7-73e7-413a-ab5b-fd6a3f2d77a0",
+        "819ccdac-5c74-43bc-b47b-4b11cc82382a",
+        "a8554837-a77c-4c87-8398-15cb200375c5",
+        "433fc484-88c1-4ec8-8a8d-fc063586f91e"
+      ],
+      "settings": {
+        "title": "Get in touch today",
+        "content_text": "<p>We're always happy to chat and help answer any questions you may have. Please note, we try our best to respond to all inquiries within 48 hours, Monday - Friday.</p><p>If calling us you will get our voicemail message as we are a small business. If you leave a voicemail we will do our best to phone you back within 1 day, or you can email us (we are usually quicker to respond this way). </p><p><em><strong>Therapy advice -</strong></em> We are pleased to offer advice from our skilled therapy team, comprising both Occupational therapy and Speech Pathology. We encourage you to reach out with any questions you have. </p><p><strong>Need help with an NDIS order?</strong><a href=\"https://mydiffability.myshopify.com/pages/ndis-orders\" title=\"We are an NDIS provider\">Click here for more info</a></p>",
+        "text_alignment": "left",
+        "social_enable": true,
+        "background": "#29a7df",
+        "text_color": "#000000",
+        "form_position": "right",
+        "width": "standard",
+        "padding_top": 11,
+        "padding_bottom": 40,
+        "animation": "none",
+        "mobile_text_alignment": "none",
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "163069535438a78b63": {
+      "type": "index__rich-text",
+      "disabled": true,
+      "settings": {
+        "title": "Come and visit",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 30,
+        "text": "<p>You can add an address here or a short paragraph about your location(s) and hours of operation.</p><p>Mon-Fri: 9:00am - 6:00pm<br/>Sat: 10:00am - 3:00pm<br/>Sun: Closed</p>",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "#eeeeee",
+        "gradient": "#c0c0c0",
+        "gradient_rotation": 180,
+        "width": "half",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_icon_with_text_column_KAWRWz": {
+      "type": "index__icon-with-text-column",
+      "blocks": {
+        "logo_image_BBqpwX": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "phone",
+            "title": "",
+            "text": "<p>Phone: <a href=\"tel:0384566613\" title=\"tel:0384566613\">(03) 8456 6613</a><br/>ABN 96 600 050 146</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_JpHwzC": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "email",
+            "title": "",
+            "text": "<p>Postal address: 3/39 Eucumbene Drive, Ravenhall, VIC 3023</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_qBhqx7": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "chat",
+            "title": "",
+            "text": "<p>Please click the link below to complete our online form to submit feedback. </p>",
+            "button_label": "Feedback",
+            "link": "shopify://pages/contact-us"
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_BBqpwX",
+        "logo_image_JpHwzC",
+        "logo_image_qBhqx7"
+      ],
+      "settings": {
+        "icons_per_row": 4,
+        "align_text": "center",
+        "icon_size": "medium",
+        "button_style": "button--primary",
+        "icon_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "#CCCCCC",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_alignment": "none",
+        "mobile_icon_size": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "index_image_with_text_overlay_HJmWw7",
+    "contact",
+    "163069535438a78b63",
+    "index_icon_with_text_column_KAWRWz"
+  ]
+}

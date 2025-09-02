@@ -99,7 +99,7 @@ A beautiful, comprehensive web dashboard for managing Claude Code agents across 
    ```
 
 5. **Open Dashboard**
-   Navigate to [http://localhost:3001](http://localhost:3001)
+   Navigate to [http://localhost:3500](http://localhost:3500)
 
 ## 🎮 Usage
 

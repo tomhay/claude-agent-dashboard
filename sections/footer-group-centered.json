@@ -1,0 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer_icon_bar": {
+      "type": "footer__icon-bar",
+      "blocks": {
+        "footer__icon-bar-0": {
+          "type": "text",
+          "settings": {
+            "icon": "leaf-2",
+            "text": "recyclable packaging",
+            "link": ""
+          }
+        },
+        "footer__icon-bar-1": {
+          "type": "text",
+          "settings": {
+            "icon": "heart",
+            "text": "membership club",
+            "link": "#"
+          }
+        },
+        "footer__icon-bar-2": {
+          "type": "text",
+          "settings": {
+            "icon": "box",
+            "text": "delivery to your door",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "footer__icon-bar-0",
+        "footer__icon-bar-1",
+        "footer__icon-bar-2"
+      ],
+      "settings": {
+        "show_icon_bar": false,
+        "icon_position": "column",
+        "alignment": "center",
+        "size": "large",
+        "background": "#ffffff",
+        "link_color": "#000000",
+        "link_hover_color": "#69cec9",
+        "text_color": "#000000",
+        "width": "standard",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "footer": {
+      "type": "footer-centered",
+      "blocks": {
+        "logo": {
+          "type": "logo",
+          "settings": {}
+        },
+        "link_list": {
+          "type": "link_list",
+          "settings": {
+            "menu": "main-menu"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {}
+        },
+        "social": {
+          "type": "social",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "logo",
+        "link_list",
+        "text",
+        "social"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "footer_icon_bar",
+    "footer"
+  ]
+}

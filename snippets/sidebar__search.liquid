@@ -1,0 +1,60 @@
+{% comment %}
+  @param block {Object}
+    The block object
+
+  @param resource_types {String}
+    The search resource type
+{% endcomment %}
+
+{% if block.settings.title != blank %}
+  <h3 class="sidebar-block__heading">
+    {{ block.settings.title }}
+  </h3>
+{% endif %}
+
+<div data-autocomplete-{{ settings.enable_autocomplete }}>
+  <form
+    class="
+      sidebar-block__content
+      sidebar-block__search
+      search-form
+    "
+    action="{{ routes.search_url }}"
+    {% if resource_types != nil %}data-search-resource-type="{{ resource_types }}"{% endif %}
+  >
+    <div class="search__fields">
+      <label for="q" class="visually-hidden">
+        {{ 'general.search.placeholder' | t }}
+      </label>
+      <div class="field">
+        <div class="control has-icons-left is-relative">
+          <input
+            class="input"
+            type="text"
+            name="q"
+            placeholder="{{ 'general.search.placeholder' | t }}"
+            value="{{ search.terms }}"
+            x-webkit-speech
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            data-q
+          >
+          {%- if resource_types != nil -%}
+            <input
+              type="hidden"
+              name="type"
+              value="{{ resource_types }}"
+            >
+          {%- endif -%}
+          <button type="submit" name="search">
+            {%
+              render 'icon',
+              name: 'search',
+            %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

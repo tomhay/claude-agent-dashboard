@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer_icon_bar": {
+      "type": "footer__icon-bar",
+      "blocks": {
+        "footer__icon-bar-0": {
+          "type": "text",
+          "settings": {
+            "icon": "leaf-2",
+            "text": "recyclable packaging",
+            "link": ""
+          }
+        },
+        "footer__icon-bar-1": {
+          "type": "text",
+          "settings": {
+            "icon": "heart",
+            "text": "membership club",
+            "link": "#"
+          }
+        },
+        "footer__icon-bar-2": {
+          "type": "text",
+          "settings": {
+            "icon": "box",
+            "text": "delivery to your door",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "footer__icon-bar-0",
+        "footer__icon-bar-1",
+        "footer__icon-bar-2"
+      ],
+      "settings": {
+        "show_icon_bar": false,
+        "icon_position": "column",
+        "alignment": "center",
+        "mobile_alignment": "none",
+        "size": "large",
+        "background": "#ffffff",
+        "link_color": "#000000",
+        "link_hover_color": "#69cec9",
+        "text_color": "#000000",
+        "width": "standard",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "footer": {
+      "type": "footer-classic",
+      "blocks": {
+        "footer-classic-0": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/my-diffability-email_094f940d-ff09-4574-b652-3a97b1248ba6.png",
+            "size": "large",
+            "text": "<p><strong>My Diffability</strong></p><p><strong>Address:</strong> Unit 3, 39 Eucumbene Drive, Ravenhall, 3023</p><p><strong>Phone:</strong><a href=\"tel:+61384566613\" title=\"tel:+61384566613\"> (03) 8456 6613</a>   </p><p><strong>Email:</strong> info@mydiffability.com.au</p><p></p>",
+            "social_icons_footer": true
+          }
+        },
+        "6290d00f-0e76-4c56-ab42-5448b483da7c": {
+          "type": "link_list",
+          "settings": {
+            "menu": "shopping-with-us",
+            "social_icons_footer": false
+          }
+        },
+        "footer-classic-1": {
+          "type": "link_list",
+          "settings": {
+            "menu": "who-we-are",
+            "social_icons_footer": false
+          }
+        },
+        "c6ce9e64-76ac-41d2-acc1-9cdbcf1db676": {
+          "type": "link_list",
+          "settings": {
+            "menu": "legal-things",
+            "social_icons_footer": false
+          }
+        },
+        "bde6a729-e8ab-423b-ad6f-e0478d083b1e": {
+          "type": "link_list",
+          "settings": {
+            "menu": "popular-brands",
+            "social_icons_footer": false
+          }
+        }
+      },
+      "block_order": [
+        "footer-classic-0",
+        "6290d00f-0e76-4c56-ab42-5448b483da7c",
+        "footer-classic-1",
+        "c6ce9e64-76ac-41d2-acc1-9cdbcf1db676",
+        "bde6a729-e8ab-423b-ad6f-e0478d083b1e"
+      ],
+      "settings": {
+        "copyright_text": "<p>Copyright. All rights reserved</p>",
+        "display_designed_by": false,
+        "display_shopify": false,
+        "show_follow_on_shop": false,
+        "show_locale_selector": false,
+        "show_currency_selector": false,
+        "display_payment_methods": true,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "footer_icon_bar",
+    "footer"
+  ]
+}

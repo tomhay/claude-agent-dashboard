@@ -1,0 +1,622 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "list-collections__main",
+      "disabled": true,
+      "settings": {
+        "collections_per_row": 3,
+        "pagination_limit": 48,
+        "pagination_type": "basic_pagination",
+        "align_height": false,
+        "collection_height": 400,
+        "enable_zoom": true,
+        "button_style": "button--secondary",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 70,
+        "overlay_text": "#ffffff",
+        "collection_title_below_image": true,
+        "width": "wide",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_collection_list_mBHgDg": {
+      "type": "index__collection-list",
+      "blocks": {
+        "collection_T3UiAt": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "all-products",
+            "title": "All Products",
+            "button_label": "VIEW ALL"
+          }
+        },
+        "collection_TTmLCU": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "ark-therapeutic",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_bMKGyz": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "noise-cancelling-ear-muffs",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_FtmHFW": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "best-sellers",
+            "image": "shopify://shop_images/Visual-Edge-Slant-Board.png",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_i4WgEr": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "books",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_pYhpHJ": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "calming-vibrating",
+            "title": "Calming & Vibrating",
+            "button_label": "View all"
+          }
+        },
+        "collection_xiJLFn": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "chew-necklace",
+            "title": "Chew Necklace",
+            "button_label": "View all"
+          }
+        },
+        "collection_DUXBqR": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "clothing",
+            "image": "shopify://shop_images/calming_clothing_long_sleeve_tshirt_tights_d54b9aa6-bc4e-4976-9483-08aa85b337c2.jpg",
+            "title": "Clothing",
+            "button_label": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_T3UiAt",
+        "collection_TTmLCU",
+        "collection_bMKGyz",
+        "collection_FtmHFW",
+        "collection_i4WgEr",
+        "collection_pYhpHJ",
+        "collection_xiJLFn",
+        "collection_DUXBqR"
+      ],
+      "settings": {
+        "collections_per_row": 4,
+        "align_height": true,
+        "collection_height": 250,
+        "enable_zoom": false,
+        "button_style": "button--primary",
+        "overlay_text": "#ffffff",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 70,
+        "collection_title_below_image": true,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_layout": "stacked",
+        "show_arrows": true,
+        "show_navigation_dots": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_collection_list_zzajGd": {
+      "type": "index__collection-list",
+      "blocks": {
+        "collection_3GY7RL": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "communication",
+            "title": "Communication",
+            "button_label": "View all"
+          }
+        },
+        "collection_B3PFpA": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "connetix",
+            "title": "Connetix",
+            "button_label": "View all"
+          }
+        },
+        "collection_VetyQF": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "feelings-emotions",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_xT66UA": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "sensory-tactile",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_eQV6FF": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "fine-motor-skills",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_9BtMDj": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "gifts",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_ftmBCh": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "gifts-under-20",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_WcdAza": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "motor-skills",
+            "title": "",
+            "button_label": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_3GY7RL",
+        "collection_B3PFpA",
+        "collection_VetyQF",
+        "collection_xT66UA",
+        "collection_eQV6FF",
+        "collection_9BtMDj",
+        "collection_ftmBCh",
+        "collection_WcdAza"
+      ],
+      "settings": {
+        "collections_per_row": 4,
+        "align_height": true,
+        "collection_height": 250,
+        "enable_zoom": false,
+        "button_style": "button--primary",
+        "overlay_text": "#ffffff",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 70,
+        "collection_title_below_image": true,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_layout": "stacked",
+        "show_arrows": true,
+        "show_navigation_dots": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_collection_list_Fncin6": {
+      "type": "index__collection-list",
+      "blocks": {
+        "collection_z9PUkh": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "handwriting-tools",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_qgX33g": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "hart-sports",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_73htyt": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "kaiko-fidgets",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_mPk4MA": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "loumet",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_BG9Nw8": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "motor-skills-resources",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_6qkaKt": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "movement-active-play",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_PBG7Jw": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "movement-balance",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_ptqhJk": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "new",
+            "title": "New Products",
+            "button_label": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_z9PUkh",
+        "collection_qgX33g",
+        "collection_73htyt",
+        "collection_mPk4MA",
+        "collection_BG9Nw8",
+        "collection_6qkaKt",
+        "collection_PBG7Jw",
+        "collection_ptqhJk"
+      ],
+      "settings": {
+        "collections_per_row": 4,
+        "align_height": true,
+        "collection_height": 250,
+        "enable_zoom": false,
+        "button_style": "button--primary",
+        "overlay_text": "#ffffff",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 70,
+        "collection_title_below_image": true,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_layout": "stacked",
+        "show_arrows": true,
+        "show_navigation_dots": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_collection_list_pzJ97c": {
+      "type": "index__collection-list",
+      "blocks": {
+        "collection_DCHjrG": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "chewy-toys",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_LUX6YY": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "pencil-grips",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_RkFPMe": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "puzzles-educational-toys",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_T4tbM6": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "reference-books",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_pBL3gc": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "sale",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_qJnzEJ": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "second-scout",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_zrMrDR": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "sensory-goodies",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_gJdJPN": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "sensory-matters",
+            "title": "",
+            "button_label": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_DCHjrG",
+        "collection_LUX6YY",
+        "collection_RkFPMe",
+        "collection_T4tbM6",
+        "collection_pBL3gc",
+        "collection_qJnzEJ",
+        "collection_zrMrDR",
+        "collection_gJdJPN"
+      ],
+      "settings": {
+        "collections_per_row": 4,
+        "align_height": true,
+        "collection_height": 250,
+        "enable_zoom": false,
+        "button_style": "button--primary",
+        "overlay_text": "#ffffff",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 70,
+        "collection_title_below_image": true,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_layout": "stacked",
+        "show_arrows": true,
+        "show_navigation_dots": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_collection_list_8RkRb8": {
+      "type": "index__collection-list",
+      "blocks": {
+        "collection_FVmNyj": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "sensory-resources",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_LxhMcd": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "sensory-swinging",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_LLp4xN": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "autism-resources",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_Y4faRT": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "social-resources",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_CQp76C": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "social-skills",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_7Ud68d": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "teens-and-adults",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_YPwiEJ": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "time-timer",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_migzez": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "toilet-aid",
+            "title": "",
+            "button_label": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_FVmNyj",
+        "collection_LxhMcd",
+        "collection_LLp4xN",
+        "collection_Y4faRT",
+        "collection_CQp76C",
+        "collection_7Ud68d",
+        "collection_YPwiEJ",
+        "collection_migzez"
+      ],
+      "settings": {
+        "collections_per_row": 4,
+        "align_height": true,
+        "collection_height": 250,
+        "enable_zoom": false,
+        "button_style": "button--primary",
+        "overlay_text": "#ffffff",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 70,
+        "collection_title_below_image": true,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_layout": "stacked",
+        "show_arrows": true,
+        "show_navigation_dots": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_collection_list_9LYnU9": {
+      "type": "index__collection-list",
+      "blocks": {
+        "collection_qDpbie": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "tools-for-school",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_yH9bN4": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "visual-sight",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_yC4afF": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "timers-schedules",
+            "title": "",
+            "button_label": "View all"
+          }
+        },
+        "collection_qxx8bG": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "weighted-products",
+            "title": "",
+            "button_label": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_qDpbie",
+        "collection_yH9bN4",
+        "collection_yC4afF",
+        "collection_qxx8bG"
+      ],
+      "settings": {
+        "collections_per_row": 4,
+        "align_height": true,
+        "collection_height": 200,
+        "enable_zoom": false,
+        "button_style": "button--primary",
+        "overlay_text": "#ffffff",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 70,
+        "collection_title_below_image": true,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_layout": "stacked",
+        "show_arrows": true,
+        "show_navigation_dots": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "index_collection_list_mBHgDg",
+    "index_collection_list_zzajGd",
+    "index_collection_list_Fncin6",
+    "index_collection_list_pzJ97c",
+    "index_collection_list_8RkRb8",
+    "index_collection_list_9LYnU9"
+  ]
+}

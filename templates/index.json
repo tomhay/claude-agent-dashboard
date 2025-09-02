@@ -1,0 +1,601 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text": {
+      "type": "index__rich-text",
+      "settings": {
+        "title": "A place where different abilities are celebrated",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "center",
+        "heading_size": 30,
+        "text": "<p>My Diffability Australia is an online supplier of toys and resources for people with different abilities.</p><p>Our continued aim is to provide affordable and beneficial resources, as well as sharing free advice on how to use them effectively from qualified and experienced therapists.</p><p></p>",
+        "text_font": "open_sans_n4",
+        "text_alignment": "center",
+        "text_size": 14,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "background": "#51b2f5",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "image_with_text_overlay": {
+      "type": "index__image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "link": "",
+        "pretext": "<p>Preheading</p>",
+        "title": "Image with Text Overlay",
+        "subtitle": "<p>Additional info in the subheading</p>",
+        "pretext_color": "#000000",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "text_alignment": "center",
+        "text_horizontal_position": "center",
+        "text_vertical_position": "middle",
+        "text_width": 40,
+        "background_color": "#ffffff",
+        "background_opacity": 77,
+        "border_color": "#ffffff",
+        "border_width": 0,
+        "button_1": "Button 1",
+        "button_1_link": "",
+        "button_1_style": "button--secondary",
+        "button_2": "Button 2",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": true,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_collections_ab_tNTneH": {
+      "type": "featured_collections_ab",
+      "blocks": {
+        "collection_jMHrzm": {
+          "type": "collection",
+          "settings": {
+            "collection": "sensory-resources",
+            "image": "shopify://shop_images/Move-n-Sit-Wedge.png",
+            "title": "Sensory"
+          }
+        },
+        "collection_MBqdqb": {
+          "type": "collection",
+          "settings": {
+            "collection": "timers-schedules",
+            "image": "shopify://shop_images/Time-Timer-MOD-Mini_1200x_1.jpg",
+            "title": "Timers & Visuals"
+          }
+        },
+        "collection_Dt9KjX": {
+          "type": "collection",
+          "settings": {
+            "collection": "sensory-tactile",
+            "image": "shopify://shop_images/Large-Emotional-Regulation-Resources-Classroom-Pack.jpg",
+            "title": "Fidgets"
+          }
+        },
+        "collection_6Ujn86": {
+          "type": "collection",
+          "settings": {
+            "collection": "fine-motor-skills",
+            "image": "shopify://shop_images/Pre-Writing-Pack.jpg",
+            "title": "Fine Motor"
+          }
+        },
+        "collection_8nzLkj": {
+          "type": "collection",
+          "settings": {
+            "collection": "handwriting-tools",
+            "image": "shopify://shop_images/melissa-doug-shape-toy-cube-fine-motor-skill-building-blocks-of-maze-43899df552f33214fbb6ea24144fb593_1_1.jpg",
+            "title": "Handwriting"
+          }
+        },
+        "collection_cJ7keT": {
+          "type": "collection",
+          "settings": {
+            "collection": "chewy-toys",
+            "image": "shopify://shop_images/Colouful-Brick-Stick-Chew-Necklace.jpg",
+            "title": "Chewy Tools"
+          }
+        },
+        "collection_WQLbRA": {
+          "type": "collection",
+          "settings": {
+            "collection": "books",
+            "image": "shopify://shop_images/1234-removebg-preview_1_2.jpg",
+            "title": "Books"
+          }
+        },
+        "collection_iEm4Gy": {
+          "type": "collection",
+          "settings": {
+            "collection": "communication",
+            "image": "shopify://shop_images/Little-Agenda-Wooden-Weekly-Visual-Schedule-Social-Skills.jpg",
+            "title": "Communication"
+          }
+        },
+        "collection_wdYRrd": {
+          "type": "collection",
+          "settings": {
+            "collection": "social-resources",
+            "image": "shopify://shop_images/Cool-Tools-Cards-Cover.jpg",
+            "title": "Social Skills"
+          }
+        },
+        "collection_MtnFGz": {
+          "type": "collection",
+          "settings": {
+            "collection": "motor-skills",
+            "image": "shopify://shop_images/Mini-Trampoline-with-handle.jpg",
+            "title": "Gross Motor"
+          }
+        }
+      },
+      "block_order": [
+        "collection_jMHrzm",
+        "collection_MBqdqb",
+        "collection_Dt9KjX",
+        "collection_6Ujn86",
+        "collection_8nzLkj",
+        "collection_cJ7keT",
+        "collection_WQLbRA",
+        "collection_iEm4Gy",
+        "collection_wdYRrd",
+        "collection_MtnFGz"
+      ],
+      "settings": {
+        "heading": "Shop popular categories",
+        "all_text": "Shop All",
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "background_color": "#f1f1f1",
+        "css_class": "popular-categories"
+      }
+    },
+    "heading": {
+      "type": "index__heading",
+      "settings": {
+        "preheading": "",
+        "title": "What makes us special?",
+        "subheading": "<p> </p>",
+        "heading_alignment": "center",
+        "vertical_spacing": "medium",
+        "preheading_color": "rgba(0,0,0,0)",
+        "heading_color": "rgba(0,0,0,0)",
+        "subheading_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_alignment": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_icon_with_text_column_KhJ6Nm": {
+      "type": "index__icon-with-text-column",
+      "blocks": {
+        "logo_image_Q6pNzg": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "briefcase",
+            "title": "Industry Experience",
+            "text": "<p>With 35+ years combined experience as therapists, we still work directly with kids in schools & other spaces, and are constantly seeking the latest innovative products.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_n6wtPq": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "dollar",
+            "title": "Business Payment Options",
+            "text": "<p>For schools and other verified Australian businesses, select our “invoice” payment method at checkout for 14 day payment terms.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_PyicM8": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "star",
+            "title": "14 Years of Trust",
+            "text": "<p>These resources weren’t so accessible when we launched MyDiffability in 2011. The original, and still the best.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_RPaLUi": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "bolt",
+            "title": "Fast Shipping",
+            "text": "<p>We understand you need your resources now. Our warehouse team works hard to deliver to you quickly</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_tyRQeJ": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "heart",
+            "title": "Therapy Advice",
+            "text": "<p>Watch videos & read advice from our therapists to help you choose the best resources for your needs</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_8xAqaC": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "gem",
+            "title": "High Quality",
+            "text": "<p>All resources available have been tested by therapists (and our kids!), to provide the best therapy tools possible.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_Q6pNzg",
+        "logo_image_n6wtPq",
+        "logo_image_PyicM8",
+        "logo_image_RPaLUi",
+        "logo_image_tyRQeJ",
+        "logo_image_8xAqaC"
+      ],
+      "settings": {
+        "icons_per_row": 3,
+        "align_text": "center",
+        "icon_size": "medium",
+        "button_style": "button--primary",
+        "icon_color": "#8c50a4",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_alignment": "none",
+        "mobile_icon_size": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "icons-ab",
+        "custom_css": ""
+      }
+    },
+    "index_image_with_text_E3RzjD": {
+      "type": "index__image-with-text",
+      "blocks": {
+        "text_tezmFR": {
+          "type": "text",
+          "settings": {
+            "title": "We are a registered  NDIS Provider",
+            "heading_size": "regular",
+            "text": "<p>Need advice about placing NDIS orders?</p>",
+            "alignment": "left",
+            "vertical_position": "center",
+            "button_label": "LEARN MORE",
+            "link": "shopify://pages/ndis-orders",
+            "button_style": "button--primary",
+            "background": "rgba(0,0,0,0)",
+            "text_color": "#ffffff",
+            "mobile_title": "",
+            "mobile_heading_size": "same_as_desktop",
+            "mobile_text": "",
+            "mobile_alignment": "same_as_desktop"
+          }
+        },
+        "image_Kj9y33": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/toy-block-play-child-clip-art-kids-playing-3a5f79bfadc3980de4f2e3d94d012d41_1.png",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_tezmFR",
+        "image_Kj9y33"
+      ],
+      "settings": {
+        "width": "wide",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_text_position": "same_as_desktop",
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20,
+        "css_class": "ndis-ab",
+        "custom_css": ""
+      }
+    },
+    "index_featured_collection_XBQaT4": {
+      "type": "index__featured-collection",
+      "settings": {
+        "title": "Shop our Best Sellers",
+        "collection": "best-sellers",
+        "products_per": 5,
+        "products_limit": 5,
+        "align_height": true,
+        "collection_height": 200,
+        "button_label": "MORE BEST SELLERS",
+        "button_style": "button--primary",
+        "collection_style": "slider",
+        "width": "wide",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "fadeInLeft",
+        "collection_layout_mobile": "grid",
+        "mobile_products_per_row": "2",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "bestsellers-ab",
+        "custom_css": ""
+      }
+    },
+    "image_with_text": {
+      "type": "index__image-with-text",
+      "blocks": {
+        "1557099063267-0": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "1557099063267-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/tarryn-dee-renee-townson-my-diffability.jpg",
+            "image_link": ""
+          }
+        },
+        "1557099063267-2": {
+          "type": "text",
+          "settings": {
+            "title": "Let us help you!",
+            "heading_size": "regular",
+            "text": "<p>Do you need a new <a href=\"/collections/sensory-tactile\" title=\"Tactile / Fidgets\">fidget</a> to help you relax or concentrate?</p><p>An affordable resource to help your child improve their <a href=\"/collections/handwriting\" title=\"Handwriting\">handwriting</a>?</p><p>Are you a teacher looking for something to help your student <a href=\"/collections/movement-balance\" title=\"Movement / Balance\">sit and focus</a> in the classroom?</p><p><a href=\"https://www.mydiffability.com.au/pages/about-us\" title=\"About Us\">Our team of experienced therapists</a> try and test our resources in everyday therapy sessions. We help ease the stress and hard work of trying to select resources that actually work.</p>",
+            "alignment": "left",
+            "vertical_position": "center",
+            "button_label": "Learn more",
+            "link": "shopify://pages/my-diffability-australia-special-needs-toys-and-resources",
+            "button_style": "button--primary",
+            "background": "rgba(0,0,0,0)",
+            "text_color": "rgba(0,0,0,0)",
+            "mobile_title": "",
+            "mobile_heading_size": "same_as_desktop",
+            "mobile_text": "",
+            "mobile_alignment": "same_as_desktop"
+          }
+        }
+      },
+      "block_order": [
+        "1557099063267-0",
+        "1557099063267-1",
+        "1557099063267-2"
+      ],
+      "settings": {
+        "width": "wide",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_text_position": "same_as_desktop",
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20,
+        "css_class": "help-ab",
+        "custom_css": ""
+      }
+    },
+    "index_heading_XYLMGr": {
+      "type": "index__heading",
+      "settings": {
+        "preheading": "",
+        "title": "Over 1,000 5 star reviews",
+        "subheading": "",
+        "heading_alignment": "center",
+        "vertical_spacing": "medium",
+        "preheading_color": "rgba(0,0,0,0)",
+        "heading_color": "rgba(0,0,0,0)",
+        "subheading_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_alignment": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "testimonials_ab_nt4Xrm": {
+      "type": "testimonials_ab",
+      "blocks": {
+        "testimonial_LAW4nL": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Our little guy loves to sit and build towers, rockets and carparks for his hotwheels using the Magnetic Tile set. It's teaching him that he can play something on his own, as well as helping with his Developmental Coordination Disorder.</p>",
+            "text": "<p>Jodie S.</p>",
+            "info_text": "#ffffff",
+            "info_background": "#8c50a4"
+          }
+        },
+        "testimonial_eDhNrM": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>An interesting unique spinner great for mechanically minded children how love to see how things work. This sturdy built to last fidget will ensure hours of fun for the whole family! You can trust My Diffability to deliver it on time and in perfect condition.</p>",
+            "text": "<p>Nathan P.</p>",
+            "info_text": "#ffffff",
+            "info_background": "#8c50a4"
+          }
+        },
+        "testimonial_RJR8y6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Great to have easy to use, effective, fun and evidence based product for kids with anxiety to help teach them skills to set them up for life.</p>",
+            "text": "<p>Deborah C.</p>",
+            "info_text": "#ffffff",
+            "info_background": "#8c50a4"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_LAW4nL",
+        "testimonial_eDhNrM",
+        "testimonial_RJR8y6"
+      ],
+      "settings": {
+        "show_border": false,
+        "enable_images": false,
+        "crop_shape": "circle",
+        "card_alignment": "left",
+        "card_text": "rgba(0,0,0,0)",
+        "card_background": "rgba(0,0,0,0)",
+        "width": "wide",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "css_class": "testimonials-ab",
+        "custom_css": ""
+      }
+    },
+    "logo_list": {
+      "type": "index__logo-list",
+      "blocks": {
+        "logo_list-0": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_list-1": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_list-2": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_list-3": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_list-4": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_list-0",
+        "logo_list-1",
+        "logo_list-2",
+        "logo_list-3",
+        "logo_list-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "logos_per_row": 5,
+        "logo_size": "medium",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "rich_text",
+    "image_with_text_overlay",
+    "featured_collections_ab_tNTneH",
+    "heading",
+    "index_icon_with_text_column_KhJ6Nm",
+    "index_image_with_text_E3RzjD",
+    "index_featured_collection_XBQaT4",
+    "image_with_text",
+    "index_heading_XYLMGr",
+    "testimonials_ab_nt4Xrm",
+    "logo_list"
+  ]
+}
