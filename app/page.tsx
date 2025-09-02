@@ -88,7 +88,8 @@ const agentPrompts: Record<string, string> = {
   'upify-seo': 'Run SEO optimization analysis for Upify: meta tags, content optimization, search engine performance.',
   'upify-conversion': 'Run conversion rate optimization for Upify: CTA analysis, checkout optimization, user experience improvements.',
   'mydiff-sod': 'Generate start of day report for MyDiff project: Shopify theme performance, store health, optimization priorities.',
-  'mydiff-theme': 'Analyze MyDiff theme optimization: performance analysis, code quality, e-commerce functionality.'
+  'mydiff-theme': 'Analyze MyDiff theme optimization: performance analysis, code quality, e-commerce functionality.',
+  'balilove-eod': 'Generate end of day update for Bali Love Project: progress summary, development velocity, issue resolution, tomorrow priorities, team coordination.'
 }
 
 const mockAgents: Agent[] = [
@@ -141,7 +142,15 @@ const mockAgents: Agent[] = [
   
   // MyDiff
   { id: 'mydiff-sod', name: 'SOD', project: 'MyDiff', type: 'daily', status: 'idle', path: 'C:\\Users\\User\\Shopify\\mydiff' },
-  { id: 'mydiff-theme', name: 'Theme Analyzer', project: 'MyDiff', type: 'core', status: 'idle', path: 'C:\\Users\\User\\Shopify\\mydiff' }
+  { id: 'mydiff-theme', name: 'Theme Analyzer', project: 'MyDiff', type: 'core', status: 'idle', path: 'C:\\Users\\User\\Shopify\\mydiff' },
+  
+  // BaliLove
+  { id: 'balilove-sod', name: 'SOD', project: 'BaliLove', type: 'daily', status: 'idle', path: 'C:\\Users\\User\\apps\\balilove' },
+  { id: 'balilove-eod', name: 'EOD', project: 'BaliLove', type: 'daily', status: 'idle', path: 'C:\\Users\\User\\apps\\balilove' },
+  { id: 'balilove-dca', name: 'DCA', project: 'BaliLove', type: 'daily', status: 'idle', path: 'C:\\Users\\User\\apps\\balilove' },
+  { id: 'balilove-sanity', name: 'Sanity CMS', project: 'BaliLove', type: 'core', status: 'idle', path: 'C:\\Users\\User\\apps\\balilove' },
+  { id: 'balilove-venues', name: 'Venue Manager', project: 'BaliLove', type: 'core', status: 'idle', path: 'C:\\Users\\User\\apps\\balilove' },
+  { id: 'balilove-seo', name: 'SEO Optimizer', project: 'BaliLove', type: 'core', status: 'idle', path: 'C:\\Users\\User\\apps\\balilove' }
 ]
 
 const getStatusDot = (status: Agent['status']) => {
@@ -443,7 +452,7 @@ export default function Dashboard() {
     }
   }
 
-  const projects = ['Universal', 'AIBL', 'BL2', 'Blxero', 'PureZone', 'Upify', 'MyDiff']
+  const projects = ['Universal', 'AIBL', 'BL2', 'Blxero', 'PureZone', 'Upify', 'MyDiff', 'BaliLove']
 
   return (
     <div className="min-h-screen bg-white p-4">
@@ -522,7 +531,7 @@ export default function Dashboard() {
 
       {/* Agents Tab */}
       {activeTab === 'agents' && (
-        <div className="grid grid-cols-7 gap-4">
+        <div className="grid grid-cols-8 gap-4">
         {projects.map(projectName => {
           const projectAgents = agents.filter(a => a.project === projectName)
           const projectGit = gitInfo.find(g => g.project === projectName)
@@ -569,7 +578,8 @@ export default function Dashboard() {
                     'Blxero': 'C:\\Users\\User\\apps\\blxero',
                     'PureZone': 'C:\\Users\\User\\Shopify\\purezone',
                     'Upify': 'C:\\Users\\User\\apps\\upify',
-                    'MyDiff': 'C:\\Users\\User\\Shopify\\mydiff'
+                    'MyDiff': 'C:\\Users\\User\\Shopify\\mydiff',
+                    'BaliLove': 'C:\\Users\\User\\apps\\balilove'
                   }
                   
                   const path = projectPaths[projectName]
@@ -645,12 +655,39 @@ export default function Dashboard() {
                             ? 'bg-gray-400 text-white cursor-not-allowed'
                             : 'bg-blue-500 text-white hover:bg-blue-600'
                         }`}
+                        title="Launch in Terminal"
                       >
                         {runningAgents.has(agent.id) || agent.status === 'running' ? (
                           <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin" />
                         ) : (
-                          <Play className="w-3 h-3" />
+                          <Terminal className="w-3 h-3" />
                         )}
+                      </button>
+                      <button
+                        onClick={async () => {
+                          // Launch in Warp terminal
+                          const response = await fetch('/api/launch-warp-agent', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                              agentId: agent.id,
+                              projectPath: agent.path,
+                              agentName: agent.name,
+                              projectName: agent.project
+                            })
+                          })
+                          const result = await response.json()
+                          if (result.success) {
+                            console.log('Warp agent launched:', result)
+                          } else {
+                            console.log('Warp launch failed:', result.error)
+                            alert('Warp launch failed. Make sure Warp terminal is installed.')
+                          }
+                        }}
+                        className="p-1 rounded transition-colors bg-purple-500 text-white hover:bg-purple-600"
+                        title="Launch in Warp (tabs)"
+                      >
+                        ⚡
                       </button>
                     </div>
                   </div>

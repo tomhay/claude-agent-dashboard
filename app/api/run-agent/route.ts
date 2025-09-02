@@ -64,7 +64,15 @@ export async function POST(req: NextRequest) {
       'aibl-test-fixer': 'Systematically address all frontend test failures in AIBL project. Analyze failing tests, identify root causes, implement fixes, and ensure test suite is stable. Work through issues #246-#276 methodically.',
       'aibl-milestone-prep': 'Prepare all AIBL issues for September 7 milestone. Review issue priorities, update assignments, ensure all critical issues are on track, and flag any blockers for management attention.',
       'bl2-bug-fixer': 'Address critical BL2 bugs systematically. Focus on wishlist issues (#145), catalog bugs (#144), and other user-facing problems. Prioritize by user impact and business value.',
-      'bl2-milestone-prep': 'Prepare BL2 for 2nd Release milestone. Review all issues, update status based on progress, ensure proper prioritization, and coordinate with development team.'
+      'bl2-milestone-prep': 'Prepare BL2 for 2nd Release milestone. Review all issues, update status based on progress, ensure proper prioritization, and coordinate with development team.',
+      
+      // BaliLove agents
+      'balilove-sod': '@sod-agent Generate BaliLove start of day report',
+      'balilove-eod': '@eod-agent Generate BaliLove end of day report',
+      'balilove-dca': '@daily-cleanup-agent Generate BaliLove daily cleanup analysis',
+      'balilove-sanity': '@sanity-cms-agent Analyze Sanity CMS content',
+      'balilove-venues': '@venue-manager-agent Review wedding venues',
+      'balilove-seo': '@seo-optimizer-agent Run SEO optimization'
     }
 
     const command = agentCommands[agentId] || `Run ${agentName} agent`

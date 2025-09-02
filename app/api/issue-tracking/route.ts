@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Octokit } from '@octokit/rest'
-import fs from 'fs'
-import path from 'path'
+import { getGitHubIssues, setGitHubIssues, getGitHubCommits, setGitHubCommits } from '../../../lib/redis'
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
@@ -68,31 +67,17 @@ export async function GET(req: NextRequest) {
 }
 
 async function analyzeIssueCommitCorrelation(owner: string, repo: string, project: string) {
-  const cacheDir = path.join(process.cwd(), 'cache')
-  const issuesCacheFile = path.join(cacheDir, `github-issues-${project}.json`)
-  const commitsCacheFile = path.join(cacheDir, `github-commits-${project}.json`)
-  
-  // Ensure cache directory exists
-  if (!fs.existsSync(cacheDir)) {
-    fs.mkdirSync(cacheDir, { recursive: true })
-  }
-
-  // Check if cached data exists and is fresh (30 minutes)
+  // Use Redis for caching instead of file system
   let allIssues: any[] = []
   let commits: any[] = []
-  const cacheAge = 30 * 60 * 1000 // 30 minutes in milliseconds
-  
-  const issuesCacheExists = fs.existsSync(issuesCacheFile)
-  const commitsCacheExists = fs.existsSync(commitsCacheFile)
-  
-  const issuesCacheFresh = issuesCacheExists && 
-    (Date.now() - fs.statSync(issuesCacheFile).mtime.getTime()) < cacheAge
-  const commitsCacheFresh = commitsCacheExists && 
-    (Date.now() - fs.statSync(commitsCacheFile).mtime.getTime()) < cacheAge
 
-  if (issuesCacheFresh) {
-    console.log(`Using cached issues for ${project}`)
-    allIssues = JSON.parse(fs.readFileSync(issuesCacheFile, 'utf8'))
+  // Try to get cached data from Redis
+  const cachedIssues = await getGitHubIssues(project)
+  const cachedCommits = await getGitHubCommits(project)
+
+  if (cachedIssues) {
+    console.log(`Using Redis cached issues for ${project}`)
+    allIssues = cachedIssues
   } else {
     console.log(`Fetching ALL issues for ${project} (${owner}/${repo}) - cache miss or expired`)
     
@@ -128,15 +113,14 @@ async function analyzeIssueCommitCorrelation(owner: string, repo: string, projec
     
     console.log(`Total issues fetched for ${project}: ${allIssues.length}`)
     
-    // Cache the results
-    fs.writeFileSync(issuesCacheFile, JSON.stringify(allIssues, null, 2))
-    console.log(`Cached ${allIssues.length} issues for ${project}`)
+    // Cache to Redis
+    await setGitHubIssues(project, allIssues)
   }
 
-  // Get recent commits (with caching)
-  if (commitsCacheFresh) {
-    console.log(`Using cached commits for ${project}`)
-    commits = JSON.parse(fs.readFileSync(commitsCacheFile, 'utf8'))
+  // Get recent commits (with Redis caching)
+  if (cachedCommits) {
+    console.log(`Using Redis cached commits for ${project}`)
+    commits = cachedCommits
   } else {
     console.log(`Fetching commits for ${project}`)
     
@@ -153,9 +137,8 @@ async function analyzeIssueCommitCorrelation(owner: string, repo: string, projec
     
     commits = recentCommits
     
-    // Cache the commits
-    fs.writeFileSync(commitsCacheFile, JSON.stringify(commits, null, 2))
-    console.log(`Cached ${commits.length} commits for ${project}`)
+    // Cache to Redis
+    await setGitHubCommits(project, commits)
   }
 
   const issueTrackingData = await Promise.all(
