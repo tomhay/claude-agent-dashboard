@@ -71,13 +71,26 @@ export async function POST(req: NextRequest) {
       fs.mkdirSync(configDir, { recursive: true })
     }
 
-    // Create launch configuration YAML
+    // Create tmux session name for this agent
+    const tmuxSessionName = `${projectName.toLowerCase()}-${agentName.toLowerCase().replace(/\s+/g, '-')}`
+    
+    // Create launch configuration YAML with tmux support
     const launchConfig = `name: ${projectName} ${agentName}
 windows:
   - tabs:
     - title: "${projectName} - ${agentName}"
       cwd: "${projectPath.replace(/\\/g, '\\\\')}"
-      exec: claude --dangerously-skip-permissions "${command.replace(/"/g, '\\"')}"
+      exec: |
+        # Create or attach to tmux session for this agent
+        if (tmux has-session -t ${tmuxSessionName} 2>$null) {
+          Write-Host "Attaching to existing tmux session: ${tmuxSessionName}"
+          tmux attach-session -t ${tmuxSessionName}
+        } else {
+          Write-Host "Creating new tmux session: ${tmuxSessionName}"
+          tmux new-session -d -s ${tmuxSessionName} -c "${projectPath.replace(/\\/g, '\\\\')}"
+          tmux send-keys -t ${tmuxSessionName} "claude --dangerously-skip-permissions '${command.replace(/'/g, "\\'")}'" Enter
+          tmux attach-session -t ${tmuxSessionName}
+        }
 `
 
     // Write launch configuration
