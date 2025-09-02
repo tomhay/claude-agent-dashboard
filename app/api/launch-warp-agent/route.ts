@@ -71,25 +71,26 @@ export async function POST(req: NextRequest) {
       fs.mkdirSync(configDir, { recursive: true })
     }
 
-    // Create tmux session name for this agent
-    const tmuxSessionName = `${projectName.toLowerCase()}-${agentName.toLowerCase().replace(/\s+/g, '-')}`
+    // Create session name for this agent
+    const sessionName = `${projectName.toLowerCase()}-${agentName.toLowerCase().replace(/\s+/g, '-')}`
     
-    // Create launch configuration YAML with tmux support
+    // Create launch configuration YAML with Windows-friendly approach
     const launchConfig = `name: ${projectName} ${agentName}
 windows:
   - tabs:
     - title: "${projectName} - ${agentName}"
       cwd: "${projectPath.replace(/\\/g, '\\\\')}"
       exec: |
-        # Create or attach to tmux session for this agent
-        if (tmux has-session -t ${tmuxSessionName} 2>$null) {
-          Write-Host "Attaching to existing tmux session: ${tmuxSessionName}"
-          tmux attach-session -t ${tmuxSessionName}
-        } else {
-          Write-Host "Creating new tmux session: ${tmuxSessionName}"
-          tmux new-session -d -s ${tmuxSessionName} -c "${projectPath.replace(/\\/g, '\\\\')}"
-          tmux send-keys -t ${tmuxSessionName} "claude --dangerously-skip-permissions '${command.replace(/'/g, "\\'")}'" Enter
-          tmux attach-session -t ${tmuxSessionName}
+        Write-Host "🚀 Starting ${projectName} ${agentName} agent..."
+        Write-Host "📁 Working directory: ${projectPath.replace(/\\/g, '\\\\')}"
+        Write-Host "⚡ Session: ${sessionName}"
+        Write-Host ""
+        # Run the agent with proper error handling
+        try {
+          claude --dangerously-skip-permissions "${command.replace(/"/g, '\\"')}"
+        } catch {
+          Write-Host "❌ Agent execution failed. Press any key to close..." -ForegroundColor Red
+          Read-Host
         }
 `
 
